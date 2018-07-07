@@ -7,7 +7,10 @@ namespace ScriptFUSION.WarframeAlertTracker {
         private Form mainForm;
 
         public WatApplication() {
-            mainForm = new WatForm(new WarframeWorldStateDownloader());
+            mainForm = new WatForm(
+                new WarframeWorldStateDownloader(new Downloader()),
+                new SolNodesDownloader(new Downloader())
+            );
             mainForm.FormClosed += delegate { ExitThread(); };
 
             mainForm.Show();

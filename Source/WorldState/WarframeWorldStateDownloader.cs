@@ -24,9 +24,13 @@ namespace ScriptFUSION.WarframeAlertTracker.WorldState {
         /// </summary>
         public int RefreshRate { get; set; } = 10;
 
-        private Downloader Downloader { get; } = new Downloader();
+        private Downloader Downloader { get; set; }
 
-        public async void Loop() {
+        public WarframeWorldStateDownloader(Downloader downloader) {
+            Downloader = downloader;
+        }
+
+        public async void DownloadIndefinitely() {
             while (true) {
                 Download(currentTicket++);
 

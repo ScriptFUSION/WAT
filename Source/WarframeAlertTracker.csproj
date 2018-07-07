@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{37C22337-38D4-4E8E-99B4-89BB16C1FF1D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WarframeAlertTracker</RootNamespace>
+    <RootNamespace>ScriptFUSION.WarframeAlertTracker</RootNamespace>
     <AssemblyName>WAT</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -54,12 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Fissure.cs">
+    <Compile Include="Controls\FissureItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Fissure.Designer.cs">
-      <DependentUpon>Fissure.cs</DependentUpon>
+    <Compile Include="Controls\FissureItem.Designer.cs">
+      <DependentUpon>FissureItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FissureList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FissureList.Designer.cs">
+      <DependentUpon>FissureList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PictureBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SolNodesDownloader.cs" />
     <Compile Include="UnixTime.cs" />
     <Compile Include="Forms\WatForm.cs">
       <SubType>Form</SubType>
@@ -78,8 +88,11 @@
     <Compile Include="WorldState\Region.cs" />
     <Compile Include="WorldState\WarframeWorldStateDownloader.cs" />
     <Compile Include="WorldState\WorldState.cs" />
-    <EmbeddedResource Include="Controls\Fissure.resx">
-      <DependentUpon>Fissure.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\FissureItem.resx">
+      <DependentUpon>FissureItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FissureList.resx">
+      <DependentUpon>FissureList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +102,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Forms\WatForm.resx">
       <DependentUpon>WatForm.cs</DependentUpon>
@@ -106,6 +120,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Relic bronze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Relic gold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Relic iron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Relic silver.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

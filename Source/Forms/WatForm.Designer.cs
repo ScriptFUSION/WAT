@@ -23,20 +23,34 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.fissures = new ScriptFUSION.WarframeAlertTracker.Controls.FissureList();
             this.SuspendLayout();
+            // 
+            // fissures
+            // 
+            this.fissures.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fissures.Location = new System.Drawing.Point(0, 0);
+            this.fissures.Name = "fissures";
+            this.fissures.Size = new System.Drawing.Size(532, 581);
+            this.fissures.TabIndex = 2;
             // 
             // WatForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 450);
+            this.ClientSize = new System.Drawing.Size(532, 581);
+            this.Controls.Add(this.fissures);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "WatForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WAT";
+            this.Text = "WAT – Warframe Alert Tracker";
+            this.Load += new System.EventHandler(this.WatForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private Controls.FissureList fissures;
     }
 }
