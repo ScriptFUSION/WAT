@@ -44,7 +44,6 @@
             this.Name = "WatForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WAT – Warframe Alert Tracker";
-            this.Load += new System.EventHandler(this.WatForm_Load);
             this.ResumeLayout(false);
 
         }

@@ -21,7 +21,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
         }
 
-        internal void UpdateComponents(List<Fissure> Fissures, JObject solNodes) {
+        internal void Update(List<Fissure> Fissures, JObject solNodes) {
             Fissures.Sort((f1, f2) => f1.Tier.CompareTo(f2.Tier));
 
             table.Controls.Clear();
