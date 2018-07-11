@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.table = new System.Windows.Forms.TableLayoutPanel();
-            this.fissure2 = new ScriptFUSION.WarframeAlertTracker.Controls.FissureItem();
+            this.dummy = new ScriptFUSION.WarframeAlertTracker.Controls.FissureItem();
             this.table.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -35,7 +35,7 @@
             this.table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.table.ColumnCount = 1;
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.table.Controls.Add(this.fissure2, 0, 0);
+            this.table.Controls.Add(this.dummy, 0, 0);
             this.table.Dock = System.Windows.Forms.DockStyle.Fill;
             this.table.Location = new System.Drawing.Point(0, 0);
             this.table.Name = "table";
@@ -45,15 +45,14 @@
             this.table.Size = new System.Drawing.Size(407, 345);
             this.table.TabIndex = 0;
             // 
-            // fissure2
+            // dummy
             // 
-            this.fissure2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dummy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fissure2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fissure2.Location = new System.Drawing.Point(5, 5);
-            this.fissure2.Name = "fissure2";
-            this.fissure2.Size = new System.Drawing.Size(397, 64);
-            this.fissure2.TabIndex = 1;
+            this.dummy.Location = new System.Drawing.Point(5, 5);
+            this.dummy.Name = "dummy";
+            this.dummy.Size = new System.Drawing.Size(397, 64);
+            this.dummy.TabIndex = 1;
             // 
             // FissureList
             // 
@@ -70,6 +69,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel table;
-        private ScriptFUSION.WarframeAlertTracker.Controls.FissureItem fissure2;
+        private ScriptFUSION.WarframeAlertTracker.Controls.FissureItem dummy;
     }
 }

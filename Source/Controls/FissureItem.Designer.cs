@@ -26,6 +26,7 @@
             this.tier = new System.Windows.Forms.Label();
             this.type = new System.Windows.Forms.Label();
             this.location = new System.Windows.Forms.Label();
+            this.endlessMarker = new ScriptFUSION.WarframeAlertTracker.Controls.EndlessMarker();
             this.relic = new ScriptFUSION.WarframeAlertTracker.Controls.PictureBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.relic)).BeginInit();
             this.SuspendLayout();
@@ -34,9 +35,9 @@
             // 
             this.tier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tier.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tier.Location = new System.Drawing.Point(3, 66);
+            this.tier.Location = new System.Drawing.Point(3, 76);
             this.tier.Name = "tier";
-            this.tier.Size = new System.Drawing.Size(59, 14);
+            this.tier.Size = new System.Drawing.Size(69, 16);
             this.tier.TabIndex = 0;
             this.tier.Text = "LITH";
             this.tier.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -45,21 +46,29 @@
             // 
             this.type.AutoSize = true;
             this.type.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.type.Location = new System.Drawing.Point(68, 7);
+            this.type.Location = new System.Drawing.Point(79, 8);
             this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(26, 15);
+            this.type.Size = new System.Drawing.Size(67, 15);
             this.type.TabIndex = 1;
-            this.type.Text = "Dig";
+            this.type.Text = "Excavation";
             // 
             // location
             // 
             this.location.AutoSize = true;
             this.location.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.location.Location = new System.Drawing.Point(68, 25);
+            this.location.Location = new System.Drawing.Point(79, 29);
             this.location.Name = "location";
             this.location.Size = new System.Drawing.Size(80, 30);
             this.location.TabIndex = 2;
             this.location.Text = "Earth, E Prime\r\nGrineer";
+            // 
+            // endlessMarker
+            // 
+            this.endlessMarker.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endlessMarker.Location = new System.Drawing.Point(82, 69);
+            this.endlessMarker.Name = "endlessMarker";
+            this.endlessMarker.Size = new System.Drawing.Size(90, 21);
+            this.endlessMarker.TabIndex = 4;
             // 
             // relic
             // 
@@ -67,21 +76,23 @@
             this.relic.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.relic.Location = new System.Drawing.Point(3, 3);
             this.relic.Name = "relic";
-            this.relic.Size = new System.Drawing.Size(59, 58);
+            this.relic.Size = new System.Drawing.Size(69, 67);
             this.relic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.relic.TabIndex = 3;
             this.relic.TabStop = false;
             // 
             // FissureItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.endlessMarker);
             this.Controls.Add(this.relic);
             this.Controls.Add(this.location);
             this.Controls.Add(this.type);
             this.Controls.Add(this.tier);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FissureItem";
-            this.Size = new System.Drawing.Size(299, 84);
+            this.Size = new System.Drawing.Size(349, 97);
             ((System.ComponentModel.ISupportInitialize)(this.relic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -94,5 +105,6 @@
         private System.Windows.Forms.Label type;
         private System.Windows.Forms.Label location;
         private PictureBoxEx relic;
+        private EndlessMarker endlessMarker;
     }
 }

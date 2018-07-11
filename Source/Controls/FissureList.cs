@@ -16,7 +16,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         public FissureList() {
             InitializeComponent();
 
-            if (!DesignMode) {
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) {
                 table.Controls.Clear();
             }
         }

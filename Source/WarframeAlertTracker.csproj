@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\EndlessMarker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EndlessMarker.Designer.cs">
+      <DependentUpon>EndlessMarker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FissureItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     <Compile Include="WorldState\Region.cs" />
     <Compile Include="WorldState\WarframeWorldStateDownloader.cs" />
     <Compile Include="WorldState\WorldState.cs" />
+    <EmbeddedResource Include="Controls\EndlessMarker.resx">
+      <DependentUpon>EndlessMarker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\FissureItem.resx">
       <DependentUpon>FissureItem.cs</DependentUpon>
     </EmbeddedResource>
