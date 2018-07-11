@@ -3,11 +3,12 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ScriptFUSION.WarframeAlertTracker.WorldState {
-    internal sealed class WarframeWorldStateDownloader {
+    internal sealed class WorldStateDownloader {
         private const string ALERTS_URL = "http://content.warframe.com/dynamic/worldState.php";
 
         public delegate void UpdateDelegate(WorldState worldState);
@@ -26,7 +27,7 @@ namespace ScriptFUSION.WarframeAlertTracker.WorldState {
 
         private Downloader Downloader { get; set; }
 
-        public WarframeWorldStateDownloader(Downloader downloader) {
+        public WorldStateDownloader(Downloader downloader) {
             Downloader = downloader;
         }
 
@@ -39,7 +40,17 @@ namespace ScriptFUSION.WarframeAlertTracker.WorldState {
         }
 
         private async void Download(uint ticket) {
-            var data = await Downloader.Download(ALERTS_URL);
+            string response;
+
+            try {
+                response = await Downloader.Download(ALERTS_URL);
+            }
+            catch (WebException) {
+                // TODO: log. Seems to occur when request times out.
+
+                // Abandon this request.
+                return;
+            }
 
             // Ticket is obsolete; discard data.
             if (ticket < lastTicket) {
@@ -48,7 +59,7 @@ namespace ScriptFUSION.WarframeAlertTracker.WorldState {
 
             lastTicket = ticket;
 
-            Update?.Invoke(Parse(data));
+            Update?.Invoke(Parse(response));
         }
 
         private WorldState Parse(string data) {

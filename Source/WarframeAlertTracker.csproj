@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\EndlessMarker.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -75,6 +78,12 @@
     <Compile Include="Controls\PictureBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\CountdownClock.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CountdownClock.Designer.cs">
+      <DependentUpon>CountdownClock.cs</DependentUpon>
+    </Compile>
     <Compile Include="SolNodesDownloader.cs" />
     <Compile Include="UnixTime.cs" />
     <Compile Include="Forms\WatForm.cs">
@@ -92,7 +101,7 @@
     <Compile Include="WorldState\MissionName.cs" />
     <Compile Include="WorldState\MissionType.cs" />
     <Compile Include="WorldState\Region.cs" />
-    <Compile Include="WorldState\WarframeWorldStateDownloader.cs" />
+    <Compile Include="WorldState\WorldStateDownloader.cs" />
     <Compile Include="WorldState\WorldState.cs" />
     <EmbeddedResource Include="Controls\EndlessMarker.resx">
       <DependentUpon>EndlessMarker.cs</DependentUpon>

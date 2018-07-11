@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
-    public partial class EndlessMarker : Control {
+    public partial class EndlessMarker : ControlEx {
         public EndlessMarker() {
             InitializeComponent();
         }
@@ -19,15 +19,17 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            var edge = ClientRectangle;
+            // Left edge.
+            var edge = PaintRectangle;
             edge.Width = 24;
             e.Graphics.FillPie(Brushes.ForestGreen, edge, 90, 180);
-            edge.Offset(ClientRectangle.Width - edge.Width, 0);
+            // Right edge.
+            edge.Offset(PaintRectangle.Width - edge.Width, 0);
             e.Graphics.FillPie(Brushes.ForestGreen, edge, 270, 180);
 
             var middle = ClientRectangle;
             middle.Offset(edge.Width / 2 - 1, 0);
-            middle.Width -= edge.Width - 2;
+            middle.Width -= edge.Width - 1;
             e.Graphics.FillRectangle(Brushes.ForestGreen, middle);
 
             using (var format = new StringFormat())

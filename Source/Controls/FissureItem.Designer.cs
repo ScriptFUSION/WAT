@@ -26,6 +26,7 @@
             this.tier = new System.Windows.Forms.Label();
             this.type = new System.Windows.Forms.Label();
             this.location = new System.Windows.Forms.Label();
+            this.countdownClock = new ScriptFUSION.WarframeAlertTracker.Controls.CountdownClock();
             this.endlessMarker = new ScriptFUSION.WarframeAlertTracker.Controls.EndlessMarker();
             this.relic = new ScriptFUSION.WarframeAlertTracker.Controls.PictureBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.relic)).BeginInit();
@@ -58,16 +59,27 @@
             this.location.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.location.Location = new System.Drawing.Point(79, 29);
             this.location.Name = "location";
-            this.location.Size = new System.Drawing.Size(80, 30);
+            this.location.Size = new System.Drawing.Size(77, 30);
             this.location.TabIndex = 2;
-            this.location.Text = "Earth, E Prime\r\nGrineer";
+            this.location.Text = "Earth, Everest\r\nGrineer";
+            // 
+            // countdownClock
+            // 
+            this.countdownClock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.countdownClock.BackColor = System.Drawing.SystemColors.Control;
+            this.countdownClock.CountdownTo = new System.DateTime(((long)(0)));
+            this.countdownClock.Location = new System.Drawing.Point(261, 8);
+            this.countdownClock.Name = "countdownClock";
+            this.countdownClock.Size = new System.Drawing.Size(80, 80);
+            this.countdownClock.TabIndex = 5;
+            this.countdownClock.Text = "countdownClock1";
             // 
             // endlessMarker
             // 
             this.endlessMarker.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endlessMarker.Location = new System.Drawing.Point(82, 69);
             this.endlessMarker.Name = "endlessMarker";
-            this.endlessMarker.Size = new System.Drawing.Size(90, 21);
+            this.endlessMarker.Size = new System.Drawing.Size(90, 22);
             this.endlessMarker.TabIndex = 4;
             // 
             // relic
@@ -85,6 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.countdownClock);
             this.Controls.Add(this.endlessMarker);
             this.Controls.Add(this.relic);
             this.Controls.Add(this.location);
@@ -106,5 +119,6 @@
         private System.Windows.Forms.Label location;
         private PictureBoxEx relic;
         private EndlessMarker endlessMarker;
+        private CountdownClock countdownClock;
     }
 }

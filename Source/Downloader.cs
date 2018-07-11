@@ -8,22 +8,15 @@ using System.Threading.Tasks;
 namespace ScriptFUSION.WarframeAlertTracker {
     /// <summary>
     /// Asynchonously downloads HTTP data from multiple URLs concurrently.
+    ///
+    /// A new client is created for every request because the underling client cannot process more than one concurrently.
     /// </summary>
     internal sealed class Downloader {
-        private Func<WebClient> WebClientFactory { get; set; }
-
-        private WebClient WebClient => WebClientFactory.Invoke();
-
-        /// <summary>
-        /// Initializes this instance with the specified WebClient factory method.
-        ///
-        /// A factory method is required because WebClient cannot process more than one request at once.
-        /// A new client is created for every request to circumvent this issue.
-        /// </summary>
-        /// <param name="webClientFactory">WebClient factory method</param>
-        public Downloader(Func<WebClient> webClientFactory) {
-            WebClientFactory = webClientFactory;
-        }
+        private WebClient WebClient => new WebClient {
+            // Workaround: avoid hanging the UI for 10 seconds whilst searching for proxies.
+            // TODO: Consider spawning a new thread instead of disabling the proxy lookup.
+            Proxy = null
+        };
 
         public async Task<string> Download(string address) {
             return Encoding.UTF8.GetString(await WebClient.DownloadDataTaskAsync(address));

@@ -10,8 +10,8 @@ namespace ScriptFUSION.WarframeAlertTracker {
             watForm.FormClosed += delegate { ExitThread(); };
             watForm.Show();
 
-            var downloader = new Downloader(() => new System.Net.WebClient());
-            var worldStateDownloader = new WarframeWorldStateDownloader(downloader);
+            var downloader = new Downloader();
+            var worldStateDownloader = new WorldStateDownloader(downloader);
             var solNodesDownloader = new SolNodesDownloader(downloader);
             var solNodes = solNodesDownloader.Download();
 

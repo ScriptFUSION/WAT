@@ -31,6 +31,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             location.Text = solNodes[fissure.Node]["value"].ToString().Replace(" (", ", ").Replace(")", string.Empty)
                 + $"\n{solNodes[fissure.Node]["enemy"].ToString()}";
             endlessMarker.Visible = fissure.IsEndless;
+            countdownClock.CountdownTo = fissure.Finish;
         }
     }
 }
