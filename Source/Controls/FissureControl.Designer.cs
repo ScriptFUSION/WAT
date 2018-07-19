@@ -1,5 +1,5 @@
 ﻿namespace ScriptFUSION.WarframeAlertTracker.Controls {
-    partial class FissureItem {
+    partial class FissureControl {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

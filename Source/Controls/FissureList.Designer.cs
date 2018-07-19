@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.table = new System.Windows.Forms.TableLayoutPanel();
-            this.dummy = new ScriptFUSION.WarframeAlertTracker.Controls.FissureItem();
+            this.dummy = new ScriptFUSION.WarframeAlertTracker.Controls.FissureControl();
             this.table.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +49,11 @@
             // 
             this.dummy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dummy.AutoSize = true;
+            this.dummy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dummy.Location = new System.Drawing.Point(5, 5);
             this.dummy.Name = "dummy";
-            this.dummy.Size = new System.Drawing.Size(397, 64);
+            this.dummy.Size = new System.Drawing.Size(397, 94);
             this.dummy.TabIndex = 1;
             // 
             // FissureList
@@ -62,6 +64,7 @@
             this.Name = "FissureList";
             this.Size = new System.Drawing.Size(407, 345);
             this.table.ResumeLayout(false);
+            this.table.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -69,6 +72,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel table;
-        private ScriptFUSION.WarframeAlertTracker.Controls.FissureItem dummy;
+        private ScriptFUSION.WarframeAlertTracker.Controls.FissureControl dummy;
     }
 }

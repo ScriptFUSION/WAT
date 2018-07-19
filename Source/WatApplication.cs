@@ -15,7 +15,7 @@ namespace ScriptFUSION.WarframeAlertTracker {
             var solNodesDownloader = new SolNodesDownloader(downloader);
             var solNodes = solNodesDownloader.Download();
 
-            worldStateDownloader.Update += async worldState => watForm.Update(worldState.Fissures.ToList(), await solNodes);
+            worldStateDownloader.Update += async worldState => watForm.Update(worldState.Fissures, await solNodes);
             worldStateDownloader.DownloadIndefinitely();
         }
     }

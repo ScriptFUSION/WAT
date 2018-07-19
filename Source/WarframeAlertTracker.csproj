@@ -63,11 +63,11 @@
     <Compile Include="Controls\EndlessMarker.Designer.cs">
       <DependentUpon>EndlessMarker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FissureItem.cs">
+    <Compile Include="Controls\FissureControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\FissureItem.Designer.cs">
-      <DependentUpon>FissureItem.cs</DependentUpon>
+    <Compile Include="Controls\FissureControl.Designer.cs">
+      <DependentUpon>FissureControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\FissureList.cs">
       <SubType>UserControl</SubType>
@@ -106,8 +106,8 @@
     <EmbeddedResource Include="Controls\EndlessMarker.resx">
       <DependentUpon>EndlessMarker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\FissureItem.resx">
-      <DependentUpon>FissureItem.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\FissureControl.resx">
+      <DependentUpon>FissureControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FissureList.resx">
       <DependentUpon>FissureList.cs</DependentUpon>

@@ -15,7 +15,7 @@ namespace ScriptFUSION.WarframeAlertTracker {
             InitializeComponent();
         }
 
-        internal void Update(List<Fissure> fissureList, JObject solNodes) {
+        internal void Update(IEnumerable<Fissure> fissureList, JObject solNodes) {
             fissures.Update(fissureList, solNodes);
         }
     }

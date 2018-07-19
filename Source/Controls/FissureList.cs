@@ -13,27 +13,53 @@ using Newtonsoft.Json.Linq;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
     public partial class FissureList : UserControl {
+        private Dictionary<string, FissureControl> idMap = new Dictionary<string, FissureControl>();
+
         public FissureList() {
             InitializeComponent();
 
+            // Remove dummy controls at run-time (used for illustrative purposes at design-time).
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) {
                 table.Controls.Clear();
             }
         }
 
-        internal void Update(List<Fissure> Fissures, JObject solNodes) {
-            Fissures.Sort((f1, f2) => f1.Tier.CompareTo(f2.Tier));
+        internal void Update(IEnumerable<Fissure> fissures, JObject solNodes) {
+            var ids = new List<string>();
 
-            table.Controls.Clear();
-            var rows = table.RowCount = Fissures.Count;
+            foreach (var fissure in fissures.OrderBy(f => f.Tier)) {
+                var fissureControl = GetOrCreateFissureControl(fissure.Id);
 
-            for (var i = 0; i < rows; ++i) {
-                var fi = new FissureItem();
+                fissureControl.Update(fissure, solNodes);
 
-                fi.Anchor |= AnchorStyles.Right;
-                fi.Update(Fissures[i], solNodes);
+                if (!table.Controls.Contains(fissureControl)) {
+                    table.Controls.Add(fissureControl, 0, ids.Count);
+                }
 
-                table.Controls.Add(fi, 0, i);
+                ids.Add(fissure.Id);
+            }
+
+            RemoveObsoleteFissureControls(ids);
+        }
+
+        private FissureControl GetOrCreateFissureControl(string id) {
+            if (idMap.ContainsKey(id)) {
+                return idMap[id];
+            }
+
+            var fissureControl = new FissureControl();
+            idMap.Add(id, fissureControl);
+
+            return fissureControl;
+        }
+
+        private void RemoveObsoleteFissureControls(List<string> validIds) {
+            // ToArray creates a copy that is necessary to avoid modifying the list during enumeration.
+            foreach (var id in idMap.Keys.ToArray()) {
+                if (!validIds.Contains(id)) {
+                    table.Controls.Remove(idMap[id]);
+                    idMap.Remove(id);
+                }
             }
         }
     }

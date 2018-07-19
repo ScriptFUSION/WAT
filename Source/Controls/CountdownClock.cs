@@ -71,7 +71,11 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         }
 
         private string FormatTimeSpan(TimeSpan timeSpan) {
-            return timeSpan.ToString(timeSpan.Hours > 0 ? @"h\h\ m\m\ s\s" : @"m\m\ s\s");
+            var format = timeSpan.Hours > 0 ? @"h\h\ m\m\ s\s" : @"m\m\ s\s";
+
+            if (timeSpan.TotalSeconds < 0) format = @"\-" + format;
+
+            return timeSpan.ToString(format);
         }
     }
 }

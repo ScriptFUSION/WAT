@@ -12,7 +12,7 @@ using ScriptFUSION.WarframeAlertTracker.Properties;
 using Newtonsoft.Json.Linq;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
-    public partial class FissureItem : UserControl {
+    public partial class FissureControl : UserControl {
         private static Dictionary<FissureTier, Bitmap> tierImageMap = new Dictionary<FissureTier, Bitmap>() {
             { FissureTier.LITH, Resources.Relic_bronze },
             { FissureTier.MESO, Resources.Relic_iron },
@@ -20,8 +20,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             { FissureTier.AXI, Resources.Relic_gold },
         };
 
-        public FissureItem() {
+        public FissureControl() {
             InitializeComponent();
+
+            Anchor |= AnchorStyles.Right;
         }
 
         internal void Update(Fissure fissure, JObject solNodes) {

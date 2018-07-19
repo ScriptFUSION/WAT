@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ScriptFUSION.WarframeAlertTracker.WorldState {
     internal sealed class Fissure {
+        public string Id { get; private set; }
         public MissionType Mission { get; private set; }
         public FissureTier Tier { get; private set; }
         public Region Region { get; private set; }
@@ -20,6 +21,8 @@ namespace ScriptFUSION.WarframeAlertTracker.WorldState {
         }
 
         private void ParseJson(JToken token) {
+            Id = token["_id"]["$oid"].ToString();
+
             MissionType missionType;
             if (Enum.TryParse(token["MissionType"].ToString(), out missionType)) {
                 Mission = missionType;

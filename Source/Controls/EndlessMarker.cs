@@ -21,7 +21,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
             // Left edge.
             var edge = PaintRectangle;
-            edge.Width = 24;
+            edge.Width = 22;
             e.Graphics.FillPie(Brushes.ForestGreen, edge, 90, 180);
             // Right edge.
             edge.Offset(PaintRectangle.Width - edge.Width, 0);
