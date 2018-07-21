@@ -61,7 +61,9 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                 e.Graphics.FillPie(brush, rect, 0, 360);
             }
 
-            e.Graphics.FillPie(Brushes.Green, rect, 270, (float)TimeRemaining.TotalSeconds / 3600 * 360);
+            if (TimeRemaining.TotalSeconds > 0) {
+                e.Graphics.FillPie(Brushes.Green, rect, 270, (float)TimeRemaining.TotalSeconds / 3600 * 360);
+            }
 
             using (var format = new StringFormat())
             using (var brush = new SolidBrush(Color.White)) {

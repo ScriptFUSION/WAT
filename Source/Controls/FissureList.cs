@@ -13,6 +13,9 @@ using Newtonsoft.Json.Linq;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
     public partial class FissureList : UserControl {
+        /// <summary>
+        /// Maintains a mapping between an id and a FissureControl.
+        /// </summary>
         private Dictionary<string, FissureControl> idMap = new Dictionary<string, FissureControl>();
 
         public FissureList() {
@@ -25,14 +28,15 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         }
 
         internal void Update(IEnumerable<Fissure> fissures, JObject solNodes) {
-            var ids = new List<string>();
+            var ids = new List<string>(fissures.Count());
 
             foreach (var fissure in fissures.OrderBy(f => f.Tier)) {
                 var fissureControl = GetOrCreateFissureControl(fissure.Id);
 
                 fissureControl.Update(fissure, solNodes);
 
-                if (!table.Controls.Contains(fissureControl)) {
+                // Ensure control is added and in the correct position.
+                if (table.GetRow(fissureControl) != ids.Count) {
                     table.Controls.Add(fissureControl, 0, ids.Count);
                 }
 
@@ -53,6 +57,11 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             return fissureControl;
         }
 
+        /// <summary>
+        /// Removes all fissure controls from the UI and the ID mapping whose ID is not present in the specified list
+        /// of valid IDs.
+        /// </summary>
+        /// <param name="validIds">List of valid IDs.</param>
         private void RemoveObsoleteFissureControls(List<string> validIds) {
             // ToArray creates a copy that is necessary to avoid modifying the list during enumeration.
             foreach (var id in idMap.Keys.ToArray()) {
