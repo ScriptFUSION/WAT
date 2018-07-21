@@ -28,6 +28,7 @@
             // 
             // fissures
             // 
+            this.fissures.AutoScroll = true;
             this.fissures.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fissures.Location = new System.Drawing.Point(0, 0);
             this.fissures.Name = "fissures";

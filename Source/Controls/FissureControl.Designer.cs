@@ -93,7 +93,7 @@
             this.relic.TabIndex = 3;
             this.relic.TabStop = false;
             // 
-            // FissureItem
+            // FissureControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,7 +104,7 @@
             this.Controls.Add(this.type);
             this.Controls.Add(this.tier);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "FissureItem";
+            this.Name = "FissureControl";
             this.Size = new System.Drawing.Size(349, 97);
             ((System.ComponentModel.ISupportInitialize)(this.relic)).EndInit();
             this.ResumeLayout(false);

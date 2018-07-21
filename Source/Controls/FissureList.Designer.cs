@@ -30,26 +30,25 @@
             // 
             // table
             // 
-            this.table.AutoScroll = true;
             this.table.AutoScrollMargin = new System.Drawing.Size(30, 0);
+            this.table.AutoSize = true;
             this.table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.table.ColumnCount = 1;
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.table.Controls.Add(this.dummy, 0, 0);
-            this.table.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.table.Dock = System.Windows.Forms.DockStyle.Top;
             this.table.Location = new System.Drawing.Point(0, 0);
             this.table.Name = "table";
             this.table.RowCount = 2;
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.table.Size = new System.Drawing.Size(407, 345);
+            this.table.Size = new System.Drawing.Size(407, 106);
             this.table.TabIndex = 0;
             // 
             // dummy
             // 
             this.dummy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dummy.AutoSize = true;
             this.dummy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dummy.Location = new System.Drawing.Point(5, 5);
             this.dummy.Name = "dummy";
@@ -64,8 +63,8 @@
             this.Name = "FissureList";
             this.Size = new System.Drawing.Size(407, 345);
             this.table.ResumeLayout(false);
-            this.table.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
