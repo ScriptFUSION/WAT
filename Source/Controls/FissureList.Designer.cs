@@ -25,7 +25,9 @@
         private void InitializeComponent() {
             this.table = new System.Windows.Forms.TableLayoutPanel();
             this.dummy = new ScriptFUSION.WarframeAlertTracker.Controls.FissureControl();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.table.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // table
@@ -55,16 +57,27 @@
             this.dummy.Size = new System.Drawing.Size(397, 94);
             this.dummy.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.table);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(407, 345);
+            this.panel1.TabIndex = 1;
+            // 
             // FissureList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.table);
+            this.Controls.Add(this.panel1);
             this.Name = "FissureList";
             this.Size = new System.Drawing.Size(407, 345);
             this.table.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -72,5 +85,6 @@
 
         private System.Windows.Forms.TableLayoutPanel table;
         private ScriptFUSION.WarframeAlertTracker.Controls.FissureControl dummy;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ScriptFUSION.WarframeAlertTracker.WorldState;
 using ScriptFUSION.WarframeAlertTracker.Controls;
 using Newtonsoft.Json.Linq;
+using ScriptFUSION.WarframeAlertTracker.Resource;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
     public partial class FissureList : UserControl {
@@ -17,6 +18,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         /// Maintains a mapping between an id and a FissureControl.
         /// </summary>
         private Dictionary<string, FissureControl> idMap = new Dictionary<string, FissureControl>();
+
+        internal ImageRepository ImageRepository { get; set; }
 
         public FissureList() {
             InitializeComponent();
@@ -52,6 +55,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
 
             var fissureControl = new FissureControl();
+            fissureControl.ImageRepository = ImageRepository;
             idMap.Add(id, fissureControl);
 
             return fissureControl;

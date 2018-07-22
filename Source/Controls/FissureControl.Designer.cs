@@ -84,7 +84,6 @@
             // 
             // relic
             // 
-            this.relic.Image = global::ScriptFUSION.WarframeAlertTracker.Properties.Resources.Relic_bronze;
             this.relic.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.relic.Location = new System.Drawing.Point(3, 3);
             this.relic.Name = "relic";

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -18,8 +19,12 @@ namespace ScriptFUSION.WarframeAlertTracker {
             Proxy = null
         };
 
-        public async Task<string> Download(string address) {
-            return Encoding.UTF8.GetString(await WebClient.DownloadDataTaskAsync(address));
+        public Task<string> Download(string address) {
+            return WebClient.DownloadStringTaskAsync(address);
+        }
+
+        public Task<Stream> DownloadStream(string address) {
+            return WebClient.OpenReadTaskAsync(address);
         }
     }
 }

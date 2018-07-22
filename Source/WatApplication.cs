@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using ScriptFUSION.WarframeAlertTracker.Resource;
 using ScriptFUSION.WarframeAlertTracker.WorldState;
 using System;
 using System.Collections.Generic;
@@ -7,15 +8,17 @@ using System.Windows.Forms;
 
 namespace ScriptFUSION.WarframeAlertTracker {
     internal sealed class WatApplication : ApplicationContext {
-        private WatForm WatForm { get; set; } = new WatForm();
+        private WatForm WatForm { get; set; }
+
+        private Downloader Downloader = new Downloader();
 
         public WatApplication() {
+            WatForm = new WatForm(new ImageRepository(new ResourceDownloader(Downloader)));
             WatForm.FormClosed += delegate { ExitThread(); };
             WatForm.Show();
 
-            var downloader = new Downloader();
-            var worldStateDownloader = new WorldStateDownloader(downloader);
-            var solNodesDownloader = new SolNodesDownloader(downloader);
+            var worldStateDownloader = new WorldStateDownloader(Downloader);
+            var solNodesDownloader = new SolNodesDownloader(Downloader);
             var solNodes = solNodesDownloader.Download();
 
             worldStateDownloader.Update += async worldState => UpdateWorldState(worldState.Fissures, await solNodes);

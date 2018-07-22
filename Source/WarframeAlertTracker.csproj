@@ -84,6 +84,10 @@
     <Compile Include="Controls\CountdownClock.Designer.cs">
       <DependentUpon>CountdownClock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resource\ImageResource.cs" />
+    <Compile Include="Resource\ImageSanitizer.cs" />
+    <Compile Include="Resource\ImageRepository.cs" />
+    <Compile Include="Resource\ResourceDownloader.cs" />
     <Compile Include="SolNodesDownloader.cs" />
     <Compile Include="UnixTime.cs" />
     <Compile Include="Forms\WatForm.cs">
@@ -138,18 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Relic bronze.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Relic gold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Relic iron.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Relic silver.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
