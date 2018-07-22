@@ -57,6 +57,7 @@
     <Compile Include="Controls\ControlEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\ControlExtensions.cs" />
     <Compile Include="Controls\EndlessMarker.cs">
       <SubType>Component</SubType>
     </Compile>

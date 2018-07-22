@@ -37,7 +37,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) {
+            if (!this.IsDesignTime()) {
                 StartClock();
             }
         }

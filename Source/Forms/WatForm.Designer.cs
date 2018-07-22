@@ -28,17 +28,18 @@
             // 
             // fissures
             // 
-            this.fissures.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fissures.Location = new System.Drawing.Point(0, 0);
+            this.fissures.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.fissures.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fissures.Location = new System.Drawing.Point(368, 280);
             this.fissures.Name = "fissures";
-            this.fissures.Size = new System.Drawing.Size(420, 428);
+            this.fissures.Size = new System.Drawing.Size(449, 427);
             this.fissures.TabIndex = 2;
             // 
             // WatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 428);
+            this.ClientSize = new System.Drawing.Size(829, 719);
             this.Controls.Add(this.fissures);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "WatForm";

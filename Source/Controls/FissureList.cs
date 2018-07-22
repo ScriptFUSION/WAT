@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ScriptFUSION.WarframeAlertTracker.WorldState;
-using ScriptFUSION.WarframeAlertTracker.Controls;
 using Newtonsoft.Json.Linq;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 
@@ -25,7 +24,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             InitializeComponent();
 
             // Remove dummy controls at run-time (used for illustrative purposes at design-time).
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) {
+            if (!this.IsDesignTime()) {
                 table.Controls.Clear();
             }
         }
@@ -40,11 +39,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
                 // Ensure control is added and in the correct position.
                 if (table.GetRow(fissureControl) != ids.Count) {
+                    // Adding a control already added just causes it to move.
                     table.Controls.Add(fissureControl, 0, ids.Count);
                 }
 
                 ids.Add(fissure.Id);
             }
+
+            fissureCount.Text = ids.Count.ToString();
 
             RemoveObsoleteFissureControls(ids);
         }

@@ -20,6 +20,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             InitializeComponent();
 
             Anchor |= AnchorStyles.Right;
+
+            relic.Paint += Relic_Paint;
+        }
+
+        private void Relic_Paint(object sender, PaintEventArgs e) {
+            if (relic.Image == null) {
+                e.Graphics.FillPie(Brushes.SaddleBrown, relic.ClientRectangle, 0, 360);
+            }
         }
 
         internal void Update(Fissure fissure, JObject solNodes) {
@@ -30,7 +38,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             endlessMarker.Visible = fissure.IsEndless;
             countdownClock.CountdownTo = fissure.Finish;
 
-            UpdateImage(fissure.Tier);
+            // Image should only need to be set once.
+            if (relic.Image == null) {
+                UpdateImage(fissure.Tier);
+            }
         }
 
         private async void UpdateImage(FissureTier fissureTier) {
