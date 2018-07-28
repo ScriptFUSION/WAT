@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ScriptFUSION.WarframeAlertTracker.Warframe {
     internal sealed class WorldState {
-        public IEnumerable<Fissure> Fissures { get; private set; }
+        public IEnumerable<Fissure> Fissures { get; }
 
         public WorldState(JObject json) {
             Fissures = json["ActiveMissions"].Select(t => new Fissure(t));

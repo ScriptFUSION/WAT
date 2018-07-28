@@ -11,16 +11,16 @@ namespace ScriptFUSION.WarframeAlertTracker.Warframe {
         public event UpdateDelegate Update;
 
         // Ticket system keeps track of responses that may arrive out of sequence.
-        private uint currentTicket = 0;
+        private uint currentTicket;
 
-        private uint lastTicket = 0;
+        private uint lastTicket;
 
         /// <summary>
         /// Gets or sets a value that specifies the rate at which the world state is refreshed, in seconds.
         /// </summary>
         public int RefreshRate { get; set; } = 10;
 
-        private Downloader Downloader { get; set; }
+        private Downloader Downloader { get; }
 
         public WorldStateDownloader(Downloader downloader) {
             Downloader = downloader;

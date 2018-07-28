@@ -9,7 +9,7 @@ namespace ScriptFUSION.WarframeAlertTracker {
     /// A new client is created for every request because the underling client cannot process more than one concurrently.
     /// </summary>
     internal sealed class Downloader {
-        private WebClient WebClient => new WebClient {
+        private static WebClient WebClient => new WebClient {
             // Workaround: avoid hanging the UI for 10 seconds whilst searching for proxies.
             // TODO: Consider spawning a new thread instead of disabling the proxy lookup.
             Proxy = null

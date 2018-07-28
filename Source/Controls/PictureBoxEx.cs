@@ -9,10 +9,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         [DefaultValue(typeof(InterpolationMode), "Default")]
         public InterpolationMode InterpolationMode
         {
-            get
-            {
-                return interpolationMode;
-            }
+            get => interpolationMode;
             set
             {
                 interpolationMode = value;

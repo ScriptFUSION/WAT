@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace ScriptFUSION.WarframeAlertTracker {
     internal sealed class WatApplication : ApplicationContext {
-        private WatForm WatForm { get; set; }
+        private WatForm WatForm { get; }
 
-        private Downloader Downloader = new Downloader();
+        private Downloader Downloader { get; } = new Downloader();
 
         public WatApplication() {
             WatForm = new WatForm(new ImageRepository(new ResourceDownloader(Downloader)));

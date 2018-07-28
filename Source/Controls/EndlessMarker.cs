@@ -15,15 +15,15 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // Left edge.
             var edge = PaintRectangle;
             edge.Width = 22;
-            e.Graphics.FillPie(Brushes.ForestGreen, edge, 90, 180);
+            e.Graphics.FillPie(Brushes.Green, edge, 90, 180);
             // Right edge.
             edge.Offset(PaintRectangle.Width - edge.Width, 0);
-            e.Graphics.FillPie(Brushes.ForestGreen, edge, 270, 180);
+            e.Graphics.FillPie(Brushes.Green, edge, 270, 180);
 
             var middle = ClientRectangle;
             middle.Offset(edge.Width / 2 - 1, 0);
             middle.Width -= edge.Width - 1;
-            e.Graphics.FillRectangle(Brushes.ForestGreen, middle);
+            e.Graphics.FillRectangle(Brushes.Green, middle);
 
             using (var format = new StringFormat())
             using (var brush = new SolidBrush(Color.White)) {

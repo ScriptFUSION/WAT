@@ -100,7 +100,7 @@
     <Compile Include="Resource\ImageSanitizer.cs" />
     <Compile Include="Resource\ImageRepository.cs" />
     <Compile Include="Resource\ResourceDownloader.cs" />
-    <Compile Include="SolNodesDownloader.cs" />
+    <Compile Include="Warframe\SolNodesDownloader.cs" />
     <Compile Include="UnixTime.cs" />
     <Compile Include="Forms\WatForm.cs">
       <SubType>Form</SubType>
@@ -116,7 +116,6 @@
     <Compile Include="Warframe\FissureTier.cs" />
     <Compile Include="Warframe\MissionName.cs" />
     <Compile Include="Warframe\MissionType.cs" />
-    <Compile Include="Warframe\Region.cs" />
     <Compile Include="Warframe\WorldStateDownloader.cs" />
     <Compile Include="Warframe\WorldState.cs" />
     <EmbeddedResource Include="Controls\EndlessMarker.resx">

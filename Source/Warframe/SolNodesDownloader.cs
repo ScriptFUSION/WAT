@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
-namespace ScriptFUSION.WarframeAlertTracker {
+namespace ScriptFUSION.WarframeAlertTracker.Warframe {
     internal sealed class SolNodesDownloader {
         private const string SOLNODES_URL = "https://raw.githubusercontent.com/WFCD/warframe-worldstate-data/master/data/solNodes.json";
 
-        private Downloader Downloader { get; set; }
+        private Downloader Downloader { get; }
 
         public SolNodesDownloader(Downloader downloader) {
             Downloader = downloader;

@@ -16,12 +16,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Warframe {
             { MissionType.MT_TERRITORY, "Interception" },
         };
 
-        public static string FromType(MissionType type) {
-            if (!missionNames.ContainsKey(type)) {
-                return type.ToString();
-            }
-
-            return missionNames[type];
-        }
+        public static string FromType(MissionType type) =>
+            missionNames.ContainsKey(type) ? missionNames[type] : type.ToString();
     }
 }

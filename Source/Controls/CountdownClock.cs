@@ -10,7 +10,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
         public DateTime CountdownTo
         {
-            get { return countdownTime; }
+            get => countdownTime;
             set
             {
                 countdownTime = value;
@@ -20,10 +20,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         }
 
         [Browsable(false)]
-        public TimeSpan TimeRemaining
-        {
-            get { return CountdownTo - DateTime.Now; }
-        }
+        public TimeSpan TimeRemaining => CountdownTo - DateTime.Now;
 
         [DefaultValue(typeof(Color), "ControlDark")]
         public Color ClockFaceColour { get; set; } = SystemColors.ControlDark;
@@ -68,7 +65,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
         }
 
-        private string FormatTimeSpan(TimeSpan timeSpan) {
+        private static string FormatTimeSpan(TimeSpan timeSpan) {
             var format = timeSpan.Hours > 0 ? @"h\h\ m\m\ s\s" : @"m\m\ s\s";
 
             if (timeSpan.TotalSeconds < 0) format = @"\-" + format;

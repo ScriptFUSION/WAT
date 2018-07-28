@@ -5,20 +5,66 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
-    public partial class RelicSummary : Control {
+    public class RelicSummary : Control {
         private static readonly string[] order = { "Lith", "Meso", "Neo", "Axi" };
 
-        [DefaultValue(0)]
-        public int Lith { get; set; } = 0;
+        private int lith, meso, neo, axi;
 
         [DefaultValue(0)]
-        public int Meso { get; set; } = 0;
+        public int Lith
+        {
+            get => lith;
+            set
+            {
+                if (lith == value) return;
+
+                lith = value;
+                Invalidate();
+            }
+        }
 
         [DefaultValue(0)]
-        public int Neo { get; set; } = 0;
+        public int Meso
+        {
+            get => meso;
+            set
+            {
+                if (meso == value) return;
+
+                meso = value;
+                Invalidate();
+            }
+        }
 
         [DefaultValue(0)]
-        public int Axi { get; set; } = 0;
+        public int Neo
+        {
+            get => neo;
+            set
+            {
+                if (neo == value) return;
+
+                neo = value;
+                Invalidate();
+            }
+        }
+
+        [DefaultValue(0)]
+        public int Axi
+        {
+            get => axi;
+            set
+            {
+                if (axi == value) return;
+
+                axi = value;
+                Invalidate();
+            }
+        }
+
+        internal RelicSummary() {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+        }
 
         internal ImageRepository ImageRepository { get; set; }
 
@@ -52,7 +98,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                     ControlPaint.DrawBorder(e.Graphics, segment, SystemColors.ControlDark, ButtonBorderStyle.Dashed);
 
                     // Invalidate control when image ready.
-                    if (image != null) image.ContinueWith(_ => Invalidate());
+                    image?.ContinueWith(_ => Invalidate());
                 }
 
                 segment.Offset(segment.Width, 0);

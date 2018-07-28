@@ -27,7 +27,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             tier.Text = fissure.Tier.ToString();
             type.Text = MissionName.FromType(fissure.Mission);
             location.Text = solNodes[fissure.Node]["value"].ToString().Replace(" (", ", ").Replace(")", string.Empty)
-                + $"\n{solNodes[fissure.Node]["enemy"].ToString()}";
+                + $"\n{solNodes[fissure.Node]["enemy"]}";
             endlessMarker.Visible = fissure.IsEndless;
             countdownClock.CountdownTo = fissure.Finish;
 

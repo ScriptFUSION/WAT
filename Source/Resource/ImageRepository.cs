@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace ScriptFUSION.WarframeAlertTracker.Resource {
     internal sealed class ImageRepository {
-        private ResourceDownloader Downloader { get; set; }
+        private ResourceDownloader Downloader { get; }
 
         private Task<Bitmap> lith;
         private Task<Bitmap> meso;
