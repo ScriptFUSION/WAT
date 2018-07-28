@@ -1,24 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ScriptFUSION.WarframeAlertTracker.WorldState;
+using ScriptFUSION.WarframeAlertTracker.Warframe;
 using Newtonsoft.Json.Linq;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
     public partial class FissureList : UserControl {
+        private ImageRepository imageRepository;
+
         /// <summary>
         /// Maintains a mapping between an id and a FissureControl.
         /// </summary>
         private Dictionary<string, FissureControl> idMap = new Dictionary<string, FissureControl>();
 
-        internal ImageRepository ImageRepository { get; set; }
+        internal ImageRepository ImageRepository
+        {
+            get { return imageRepository; }
+            set
+            {
+                imageRepository = value;
+
+                summary.ImageRepository = value;
+                endlessSummary.ImageRepository = value;
+            }
+        }
 
         public FissureList() {
             InitializeComponent();
@@ -46,9 +53,23 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                 ids.Add(fissure.Id);
             }
 
-            fissureCount.Text = ids.Count.ToString();
-
             RemoveObsoleteFissureControls(ids);
+
+            UpdateTotals(fissures);
+        }
+
+        private void UpdateTotals(IEnumerable<Fissure> fissures) {
+            fissureCount.Text = fissures.Count().ToString();
+            summary.Lith = fissures.Where(f => f.Tier == FissureTier.LITH).Count();
+            summary.Meso = fissures.Where(f => f.Tier == FissureTier.MESO).Count();
+            summary.Neo = fissures.Where(f => f.Tier == FissureTier.NEO).Count();
+            summary.Axi = fissures.Where(f => f.Tier == FissureTier.AXI).Count();
+
+            endlessCount.Text = fissures.Where(f => f.IsEndless).Count().ToString();
+            endlessSummary.Lith = fissures.Where(f => f.IsEndless && f.Tier == FissureTier.LITH).Count();
+            endlessSummary.Meso = fissures.Where(f => f.IsEndless && f.Tier == FissureTier.MESO).Count();
+            endlessSummary.Neo = fissures.Where(f => f.IsEndless && f.Tier == FissureTier.NEO).Count();
+            endlessSummary.Axi = fissures.Where(f => f.IsEndless && f.Tier == FissureTier.AXI).Count();
         }
 
         private FissureControl GetOrCreateFissureControl(string id) {

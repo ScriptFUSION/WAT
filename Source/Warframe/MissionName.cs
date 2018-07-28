@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace ScriptFUSION.WarframeAlertTracker.WorldState {
+namespace ScriptFUSION.WarframeAlertTracker.Warframe {
     internal static class MissionName {
         private static readonly Dictionary<MissionType, string> missionNames = new Dictionary<MissionType, string> {
             { MissionType.MT_CAPTURE, "Capture" },

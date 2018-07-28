@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ScriptFUSION.WarframeAlertTracker.WorldState;
-using ScriptFUSION.WarframeAlertTracker.Properties;
+using ScriptFUSION.WarframeAlertTracker.Warframe;
 using Newtonsoft.Json.Linq;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 
@@ -46,13 +39,11 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
         private async void UpdateImage(FissureTier fissureTier) {
             relic.Image = await (Task<Bitmap>)
-               typeof(ImageRepository).InvokeMember(
-                   System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(fissureTier.ToString().ToLowerInvariant()),
-                   System.Reflection.BindingFlags.GetProperty,
-                   null,
-                   ImageRepository,
-                   null
-                )
+                typeof(ImageRepository).GetProperty(
+                    System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(
+                        fissureTier.ToString().ToLowerInvariant()
+                    )
+                ).GetValue(ImageRepository)
             ;
         }
     }

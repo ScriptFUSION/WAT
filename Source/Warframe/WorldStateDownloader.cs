@@ -1,13 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace ScriptFUSION.WarframeAlertTracker.WorldState {
+namespace ScriptFUSION.WarframeAlertTracker.Warframe {
     internal sealed class WorldStateDownloader {
         private const string ALERTS_URL = "http://content.warframe.com/dynamic/worldState.php";
 

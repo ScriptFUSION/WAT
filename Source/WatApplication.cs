@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
+using ScriptFUSION.WarframeAlertTracker.Forms;
 using ScriptFUSION.WarframeAlertTracker.Resource;
-using ScriptFUSION.WarframeAlertTracker.WorldState;
-using System;
+using ScriptFUSION.WarframeAlertTracker.Warframe;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace ScriptFUSION.WarframeAlertTracker {

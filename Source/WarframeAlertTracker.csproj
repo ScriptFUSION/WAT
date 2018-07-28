@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alerts\Alert.cs" />
+    <Compile Include="Alerts\FissureAlert.cs" />
     <Compile Include="Controls\ControlEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -85,6 +87,15 @@
     <Compile Include="Controls\CountdownClock.Designer.cs">
       <DependentUpon>CountdownClock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RelicSummary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\AlertsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AlertsForm.Designer.cs">
+      <DependentUpon>AlertsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resource\ImageResource.cs" />
     <Compile Include="Resource\ImageSanitizer.cs" />
     <Compile Include="Resource\ImageRepository.cs" />
@@ -97,17 +108,17 @@
     <Compile Include="Forms\WatForm.Designer.cs">
       <DependentUpon>WatForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorldState\Fissure.cs" />
+    <Compile Include="Warframe\Fissure.cs" />
     <Compile Include="WatApplication.cs" />
     <Compile Include="Downloader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorldState\FissureTier.cs" />
-    <Compile Include="WorldState\MissionName.cs" />
-    <Compile Include="WorldState\MissionType.cs" />
-    <Compile Include="WorldState\Region.cs" />
-    <Compile Include="WorldState\WorldStateDownloader.cs" />
-    <Compile Include="WorldState\WorldState.cs" />
+    <Compile Include="Warframe\FissureTier.cs" />
+    <Compile Include="Warframe\MissionName.cs" />
+    <Compile Include="Warframe\MissionType.cs" />
+    <Compile Include="Warframe\Region.cs" />
+    <Compile Include="Warframe\WorldStateDownloader.cs" />
+    <Compile Include="Warframe\WorldState.cs" />
     <EmbeddedResource Include="Controls\EndlessMarker.resx">
       <DependentUpon>EndlessMarker.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\FissureList.resx">
       <DependentUpon>FissureList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AlertsForm.resx">
+      <DependentUpon>AlertsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

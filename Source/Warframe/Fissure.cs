@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ScriptFUSION.WarframeAlertTracker.WorldState {
+namespace ScriptFUSION.WarframeAlertTracker.Warframe {
     internal sealed class Fissure {
         public string Id { get; private set; }
         public MissionType Mission { get; private set; }
