@@ -24,12 +24,12 @@
         /// </summary>
         private void InitializeComponent() {
             this.table = new System.Windows.Forms.TableLayoutPanel();
+            this.dummy = new ScriptFUSION.WarframeAlertTracker.Controls.FissureControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.fissureCount = new System.Windows.Forms.Label();
+            this.summary = new ScriptFUSION.WarframeAlertTracker.Controls.RelicSummary();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.summary = new ScriptFUSION.WarframeAlertTracker.Controls.RelicSummary();
-            this.dummy = new ScriptFUSION.WarframeAlertTracker.Controls.FissureControl();
             this.label2 = new System.Windows.Forms.Label();
             this.endlessCount = new System.Windows.Forms.Label();
             this.endlessSummary = new ScriptFUSION.WarframeAlertTracker.Controls.RelicSummary();
@@ -55,6 +55,16 @@
             this.table.Size = new System.Drawing.Size(431, 106);
             this.table.TabIndex = 0;
             // 
+            // dummy
+            // 
+            this.dummy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dummy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dummy.Location = new System.Drawing.Point(5, 5);
+            this.dummy.Name = "dummy";
+            this.dummy.Size = new System.Drawing.Size(421, 94);
+            this.dummy.TabIndex = 1;
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -78,6 +88,17 @@
             this.fissureCount.TabIndex = 2;
             this.fissureCount.Text = "0";
             this.fissureCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // summary
+            // 
+            this.summary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.summary.Location = new System.Drawing.Point(74, 0);
+            this.summary.Margin = new System.Windows.Forms.Padding(0);
+            this.summary.Name = "summary";
+            this.summary.Size = new System.Drawing.Size(140, 34);
+            this.summary.TabIndex = 2;
+            this.summary.Text = "relicSummary1";
+            this.summary.ZeroColor = System.Drawing.Color.Firebrick;
             // 
             // label1
             // 
@@ -114,30 +135,9 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(431, 34);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // summary
-            // 
-            this.summary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.summary.Location = new System.Drawing.Point(74, 0);
-            this.summary.Margin = new System.Windows.Forms.Padding(0);
-            this.summary.Name = "summary";
-            this.summary.Size = new System.Drawing.Size(140, 34);
-            this.summary.TabIndex = 2;
-            this.summary.Text = "relicSummary1";
-            // 
-            // dummy
-            // 
-            this.dummy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dummy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dummy.Location = new System.Drawing.Point(5, 5);
-            this.dummy.Name = "dummy";
-            this.dummy.Size = new System.Drawing.Size(421, 94);
-            this.dummy.TabIndex = 1;
-            // 
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.ForeColor = System.Drawing.Color.Green;
             this.label2.Location = new System.Drawing.Point(214, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
@@ -167,6 +167,7 @@
             this.endlessSummary.Size = new System.Drawing.Size(143, 34);
             this.endlessSummary.TabIndex = 5;
             this.endlessSummary.Text = "relicSummary1";
+            this.endlessSummary.ZeroColor = System.Drawing.Color.Firebrick;
             // 
             // FissureList
             // 

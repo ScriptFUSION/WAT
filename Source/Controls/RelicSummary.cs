@@ -10,6 +10,9 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
         private int lith, meso, neo, axi;
 
+        [DefaultValue(typeof(Color), "ControlText")]
+        public Color ZeroColor { get; set; } = SystemColors.ControlText;
+
         [DefaultValue(0)]
         public int Lith
         {
@@ -62,7 +65,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
         }
 
-        internal RelicSummary() {
+        public RelicSummary() {
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
 
@@ -103,14 +106,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
                 segment.Offset(segment.Width, 0);
 
-                using (var brush = new SolidBrush(ForeColor))
                 using (var format = new StringFormat()) {
-                    format.Alignment = StringAlignment.Center;
                     format.LineAlignment = StringAlignment.Center;
 
                     var value = (int)GetType().GetProperty(order[i]).GetValue(this);
 
-                    e.Graphics.DrawString(value.ToString(), Font, brush, segment, format);
+                    using (var brush = new SolidBrush(value == 0 ? ZeroColor : ForeColor)) {
+                        e.Graphics.DrawString(value.ToString(), Font, brush, segment, format);
+                    }
                 }
 
                 segment.Offset(segment.Width, 0);

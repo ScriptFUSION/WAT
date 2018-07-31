@@ -100,6 +100,7 @@
     <Compile Include="Resource\ImageSanitizer.cs" />
     <Compile Include="Resource\ImageRepository.cs" />
     <Compile Include="Resource\ResourceDownloader.cs" />
+    <Compile Include="Warframe\CurrentWorldState.cs" />
     <Compile Include="Warframe\SolNodesDownloader.cs" />
     <Compile Include="UnixTime.cs" />
     <Compile Include="Forms\WatForm.cs">

@@ -27,6 +27,7 @@
             "Fissure",
             "Lith excavation mission"}, -1);
             this.fissuresGroup = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,7 +39,7 @@
             this.cancel = new System.Windows.Forms.Button();
             this.alertsGroup = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fissuresGroup.SuspendLayout();
             this.alertsGroup.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +57,15 @@
             this.fissuresGroup.TabIndex = 0;
             this.fissuresGroup.TabStop = false;
             this.fissuresGroup.Text = "Fissures";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(414, 18);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 24);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Add";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // comboBox2
             // 
@@ -98,7 +108,8 @@
             this.listView1.CheckBoxes = true;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -162,14 +173,9 @@
             this.button1.Text = "-";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // columnHeader3
             // 
-            this.button2.Location = new System.Drawing.Point(414, 18);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 24);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.columnHeader3.Text = "Matching";
             // 
             // AlertsForm
             // 
@@ -209,5 +215,6 @@
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.GroupBox alertsGroup;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

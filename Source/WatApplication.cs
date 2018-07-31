@@ -2,7 +2,6 @@
 using ScriptFUSION.WarframeAlertTracker.Forms;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 using ScriptFUSION.WarframeAlertTracker.Warframe;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ScriptFUSION.WarframeAlertTracker {
@@ -11,21 +10,20 @@ namespace ScriptFUSION.WarframeAlertTracker {
 
         private Downloader Downloader { get; } = new Downloader();
 
+        private CurrentWorldState CurrentWorldState { get; }
+
         public WatApplication() {
             WatForm = new WatForm(new ImageRepository(new ResourceDownloader(Downloader)));
             WatForm.FormClosed += delegate { ExitThread(); };
             WatForm.Show();
 
-            var worldStateDownloader = new WorldStateDownloader(Downloader);
-            var solNodesDownloader = new SolNodesDownloader(Downloader);
-            var solNodes = solNodesDownloader.Download();
-
-            worldStateDownloader.Update += async worldState => UpdateWorldState(worldState.Fissures, await solNodes);
-            worldStateDownloader.DownloadIndefinitely();
+            var solNodes = new SolNodesDownloader(Downloader).Download();
+            CurrentWorldState = new CurrentWorldState(new WorldStateDownloader(Downloader));
+            CurrentWorldState.Update += async worldState => UpdateWorldState(worldState, await solNodes);
         }
 
-        private void UpdateWorldState(IEnumerable<Fissure> fissures, JObject solNodes) {
-            WatForm.Update(fissures, solNodes);
+        private void UpdateWorldState(WorldState worldState, JObject solNodes) {
+            WatForm.Update(worldState.Fissures, solNodes);
         }
     }
 }
