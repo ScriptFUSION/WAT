@@ -8,23 +8,26 @@ namespace ScriptFUSION.WarframeAlertTracker.Warframe {
         public event UpdateDelegate Update;
 
         public WorldState CurrentState { get; private set; }
-
         /// <summary>
         /// Gets or sets a value that specifies the rate at which the world state is refreshed, in seconds.
         /// </summary>
         /// <remarks>It is observed that the server refreshes state once per minute.</remarks>
         public int RefreshRate { get; set; } = 10;
 
+        public bool Running { get; private set; }
+
         private WorldStateDownloader Downloader { get; }
 
         public CurrentWorldState(WorldStateDownloader downloader) {
             Downloader = downloader;
-
-            DownloadIndefinitely();
         }
 
-        private async void DownloadIndefinitely() {
-            while (true) {
+        public async void DownloadIndefinitely() {
+            if (Running) throw new Exception("Already running.");
+
+            Running = true;
+
+            while (Running) {
                 Download();
 
                 await Task.Delay(RefreshRate * 1000);
@@ -35,7 +38,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Warframe {
             var worldState = await Downloader.Download();
 
             if (CurrentState == null || worldState?.Time > CurrentState.Time) {
-                Update?.Invoke(CurrentState = worldState);
+                CurrentState = worldState;
+                Update?.Invoke(worldState);
             }
         }
     }

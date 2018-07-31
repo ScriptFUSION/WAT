@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using ScriptFUSION.WarframeAlertTracker.Warframe;
@@ -36,7 +35,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
         }
 
-        internal void Update(IEnumerable<Fissure> fissures, JObject solNodes) {
+        internal void Update(List<Fissure> fissures, JObject solNodes) {
             var ids = new List<string>(fissures.Count());
 
             foreach (var fissure in fissures.OrderBy(f => f.Tier)) {
@@ -58,7 +57,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             UpdateTotals(fissures);
         }
 
-        private void UpdateTotals(IEnumerable<Fissure> fissures) {
+        private void UpdateTotals(List<Fissure> fissures) {
             fissureCount.Text = fissures.Count().ToString();
             summary.Lith = fissures.Count(f => f.Tier == FissureTier.LITH);
             summary.Meso = fissures.Count(f => f.Tier == FissureTier.MESO);
@@ -91,10 +90,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         private void RemoveObsoleteFissureControls(List<string> validIds) {
             // ToArray creates a copy that is necessary to avoid modifying the list during enumeration.
             foreach (var id in idMap.Keys.ToArray()) {
-                if (!validIds.Contains(id)) {
-                    table.Controls.Remove(idMap[id]);
-                    idMap.Remove(id);
-                }
+                if (validIds.Contains(id)) continue;
+
+                table.Controls.Remove(idMap[id]);
+                idMap.Remove(id);
             }
         }
     }

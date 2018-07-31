@@ -3,17 +3,31 @@ using ScriptFUSION.WarframeAlertTracker.Resource;
 using ScriptFUSION.WarframeAlertTracker.Warframe;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ScriptFUSION.WarframeAlertTracker.Forms {
     public partial class WatForm : Form {
-        internal WatForm(ImageRepository images) {
+        private CurrentWorldState CurrentWorldState { get; }
+
+        internal WatForm(Dependencies dependencies) {
             InitializeComponent();
 
-            fissures.ImageRepository = images;
+            var solNodes = dependencies.SolNodesDownloader.Download();
+            CurrentWorldState = dependencies.CurrentWorldState;
+            CurrentWorldState.Update += async worldState => Update(worldState.Fissures.ToList(), await solNodes);
+            CurrentWorldState.DownloadIndefinitely();
+
+            fissures.ImageRepository = dependencies.ImageRepository;
         }
 
-        internal void Update(IEnumerable<Fissure> fissureList, JObject solNodes) {
+        internal struct Dependencies {
+            public CurrentWorldState CurrentWorldState;
+            public SolNodesDownloader SolNodesDownloader;
+            public ImageRepository ImageRepository;
+        }
+
+        internal void Update(List<Fissure> fissureList, JObject solNodes) {
             fissures.Update(fissureList, solNodes);
         }
 
