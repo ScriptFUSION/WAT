@@ -35,11 +35,11 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ok = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.alertsGroup = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fissuresGroup.SuspendLayout();
             this.alertsGroup.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +132,11 @@
             this.columnHeader2.Text = "Description";
             this.columnHeader2.Width = 121;
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Match";
+            this.columnHeader3.Width = 260;
+            // 
             // ok
             // 
             this.ok.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -172,10 +177,6 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "-";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Matching";
             // 
             // AlertsForm
             // 
