@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace ScriptFUSION.WarframeAlertTracker.Controls {
+namespace ScriptFUSION.WarframeAlertTracker.Drawing {
     internal static class GraphicsExtension {
         public static void StrokeText(
             this Graphics graphics,

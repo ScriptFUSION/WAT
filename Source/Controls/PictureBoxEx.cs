@@ -2,6 +2,7 @@
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
 using System.Drawing;
+using ScriptFUSION.WarframeAlertTracker.Drawing;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
     public class PictureBoxEx : PictureBox {
@@ -54,7 +55,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
             base.OnPaint(e);
 
-            e.Graphics.StrokeText(Caption, Font, ForeColor, Color.FromArgb(215, Color.Black), ClientRectangle, 2F, CaptionOffset);
+            e.Graphics.StrokeText(Caption, Font, ForeColor, Color.FromArgb(192, Color.Black), ClientRectangle, 2F, CaptionOffset);
         }
     }
 }

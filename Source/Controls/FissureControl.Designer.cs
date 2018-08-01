@@ -55,13 +55,14 @@
             // 
             this.countdownClock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.countdownClock.BackColor = System.Drawing.SystemColors.Control;
+            this.countdownClock.ClockFaceColour = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(63)))));
             this.countdownClock.CountdownTo = new System.DateTime(((long)(0)));
             this.countdownClock.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.countdownClock.ForeColor = System.Drawing.Color.Honeydew;
             this.countdownClock.Location = new System.Drawing.Point(261, 8);
             this.countdownClock.Name = "countdownClock";
             this.countdownClock.Size = new System.Drawing.Size(80, 80);
-            this.countdownClock.StrokeColour = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(0)))), ((int)(((byte)(3)))), ((int)(((byte)(0)))));
+            this.countdownClock.StrokeColour = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(3)))));
             this.countdownClock.TabIndex = 5;
             this.countdownClock.Text = "countdownClock1";
             // 

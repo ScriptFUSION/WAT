@@ -27,7 +27,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             public ImageRepository ImageRepository;
         }
 
-        internal void Update(List<Fissure> fissureList, JObject solNodes) {
+        private void Update(List<Fissure> fissureList, JObject solNodes) {
             fissures.Update(fissureList, solNodes);
         }
 

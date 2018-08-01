@@ -78,7 +78,7 @@
     <Compile Include="Controls\FissureList.Designer.cs">
       <DependentUpon>FissureList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\GraphicsExtension.cs" />
+    <Compile Include="Drawing\GraphicsExtension.cs" />
     <Compile Include="Controls\PictureBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -91,6 +91,7 @@
     <Compile Include="Controls\RelicSummary.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Drawing\Rgb.cs" />
     <Compile Include="Forms\AlertsForm.cs">
       <SubType>Form</SubType>
     </Compile>
