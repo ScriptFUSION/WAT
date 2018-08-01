@@ -25,11 +25,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             middle.Width -= edge.Width - 1;
             e.Graphics.FillRectangle(Brushes.Green, middle);
 
-            using (var format = new StringFormat())
-            using (var brush = new SolidBrush(Color.White)) {
-                format.Alignment = format.LineAlignment = StringAlignment.Center;
-                e.Graphics.DrawString("Endless ☑", Font, brush, ClientRectangle, format);
-            }
+            TextRenderer.DrawText(e.Graphics, "Endless ☑", Font, PaintRectangle, Color.White);
         }
     }
 }

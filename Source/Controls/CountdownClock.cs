@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,6 +26,9 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         [DefaultValue(typeof(Color), "ControlDark")]
         public Color ClockFaceColour { get; set; } = SystemColors.ControlDark;
 
+        [DefaultValue(typeof(Color), "Black")]
+        public Color StrokeColour { get; set; } = Color.Black;
+
         public CountdownClock() {
             InitializeComponent();
 
@@ -46,7 +50,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
 
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
             var rect = PaintRectangle;
 
@@ -58,11 +62,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                 e.Graphics.FillPie(Brushes.Green, rect, 270, (float)TimeRemaining.TotalSeconds / 3600 * 360);
             }
 
-            using (var format = new StringFormat())
-            using (var brush = new SolidBrush(Color.White)) {
-                format.Alignment = format.LineAlignment = StringAlignment.Center;
-                e.Graphics.DrawString(FormatTimeSpan(TimeRemaining), Font, brush, ClientRectangle, format);
-            }
+            e.Graphics.StrokeText(FormatTimeSpan(TimeRemaining), Font, ForeColor, StrokeColour, ClientRectangle, 2F);
         }
 
         private static string FormatTimeSpan(TimeSpan timeSpan) {
