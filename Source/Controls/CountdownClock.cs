@@ -8,7 +8,7 @@ using ScriptFUSION.WarframeAlertTracker.Drawing;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
     public partial class CountdownClock : ControlEx {
-        private static readonly ColorBlend colourBands = new ColorBlend {
+        private static readonly ColorBlend rimColours = new ColorBlend {
             Colors = new[]
             {
                 Color.FromArgb(204, 92, 92),
@@ -16,17 +16,17 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                 Color.FromArgb(117, 205, 121),
                 Color.FromArgb(117, 205, 121)
             },
-            Positions = new[] { 0, .15F, .5F, 1 }
+            Positions = new[] { 0, 10 / 60F, .5F, 1 }
         };
 
-        private DateTime countdownTime;
+        private DateTime countdownTo;
 
         public DateTime CountdownTo
         {
-            get => countdownTime;
+            get => countdownTo;
             set
             {
-                countdownTime = value;
+                countdownTo = value;
 
                 Invalidate();
             }
@@ -66,7 +66,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
             // Draw face.
             var faceArea = PaintRectangle;
-            faceArea.Inflate(-2, -2);
+            faceArea.Inflate(-3, -3);
             using (var brush = new SolidBrush(ClockFaceColour)) {
                 e.Graphics.FillPie(brush, faceArea, 0, 360);
             }
@@ -74,18 +74,19 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             var remaining = (float)TimeRemaining.TotalSeconds / 3600;
 
             if (remaining > 0) {
-                var primaryColor = Rgb.Interpolate(colourBands, remaining);
+                var primaryColor = Rgb.InterpolateGradient(rimColours, remaining);
 
                 // Draw gradated time band.
                 using (var gradientPath = new GraphicsPath()) {
                     var gradientArea = PaintRectangle;
+                    // Make gradient slightly larger than paint area to avoid jaggies. Loses some color at the edge.
                     gradientArea.Inflate(1, 1);
                     gradientPath.AddEllipse(gradientArea);
 
                     using (var brush = new PathGradientBrush(gradientPath)) {
                         brush.CenterColor = ClockFaceColour;
                         brush.SurroundColors = new[] { primaryColor };
-                        brush.FocusScales = new PointF(.715F, .715F);
+                        brush.FocusScales = new PointF(.7F, .7F);
 
                         e.Graphics.FillPie(brush, PaintRectangle, 270, remaining * 360);
                     }
@@ -96,7 +97,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                     var origin = new PointF(PaintRectangle.Width / 2F, PaintRectangle.Height / 2F);
 
                     for (var i = 0; i < 6; ++i) {
-                        // Skip ticks representing a time greater than currently remaining since it would overlap the face.
+                        // Skip ticks representing a time greater than currently remaining since they protrude beyond the face.
                         if (i / 6F > remaining) continue;
 
                         var extent = origin;
@@ -126,7 +127,12 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
 
             // Draw text.
-            e.Graphics.StrokeText(FormatTimeSpan(TimeRemaining), Font, ForeColor, StrokeColour, ClientRectangle);
+            var textColour = ForeColor;
+            if (remaining < 5 / 60F) {
+                textColour = Rgb.Interpolate(rimColours.Colors[0], textColour, remaining * 12);
+            }
+
+            e.Graphics.StrokeText(FormatTimeSpan(TimeRemaining), Font, textColour, StrokeColour, ClientRectangle);
         }
 
         private static string FormatTimeSpan(TimeSpan timeSpan) {

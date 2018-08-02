@@ -31,12 +31,13 @@
             // 
             // fissures
             // 
-            this.fissures.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.fissures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fissures.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fissures.Location = new System.Drawing.Point(12, 18);
             this.fissures.Name = "fissures";
-            this.fissures.Size = new System.Drawing.Size(449, 427);
+            this.fissures.Size = new System.Drawing.Size(449, 456);
             this.fissures.TabIndex = 2;
             // 
             // toolStrip1
@@ -61,7 +62,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 457);
+            this.ClientSize = new System.Drawing.Size(473, 486);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.fissures);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
