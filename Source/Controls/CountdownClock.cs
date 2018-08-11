@@ -128,8 +128,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
 
             // Draw text.
             var textColour = ForeColor;
-            if (remaining < 5 / 60F) {
-                textColour = Rgb.Interpolate(rimColours.Colors[0], textColour, remaining * 12);
+            if (remaining < 6 / 60F) {
+                textColour = Rgb.Interpolate(rimColours.Colors[0], textColour, remaining * 10);
             }
 
             e.Graphics.StrokeText(FormatTimeSpan(TimeRemaining), Font, textColour, StrokeColour, ClientRectangle);

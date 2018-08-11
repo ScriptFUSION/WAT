@@ -35,8 +35,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
         }
 
-        internal void Update(List<Fissure> fissures, JObject solNodes) {
-            var ids = new List<string>(fissures.Count());
+        internal void Update(IReadOnlyCollection<Fissure> fissures, JObject solNodes) {
+            var ids = new List<string>(fissures.Count);
 
             foreach (var fissure in fissures.OrderBy(f => f.Tier)) {
                 var fissureControl = GetOrCreateFissureControl(fissure.Id);
@@ -57,18 +57,25 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             UpdateTotals(fissures);
         }
 
-        private void UpdateTotals(List<Fissure> fissures) {
-            fissureCount.Text = fissures.Count().ToString();
-            summary.Lith = fissures.Count(f => f.Tier == FissureTier.LITH);
-            summary.Meso = fissures.Count(f => f.Tier == FissureTier.MESO);
-            summary.Neo = fissures.Count(f => f.Tier == FissureTier.NEO);
-            summary.Axi = fissures.Count(f => f.Tier == FissureTier.AXI);
+        private void UpdateTotals(IReadOnlyCollection<Fissure> fissures) {
+            UpdateFissureTotals(fissures);
+            UpdateEndlessFissureTotals(fissures);
+        }
 
+        private void UpdateFissureTotals(IReadOnlyCollection<Fissure> fissures) {
+            fissureCount.Text = fissures.Count.ToString();
+            summary.Lith = fissures.Count(f => f.Tier == FissureTier.Lith);
+            summary.Meso = fissures.Count(f => f.Tier == FissureTier.Meso);
+            summary.Neo = fissures.Count(f => f.Tier == FissureTier.Neo);
+            summary.Axi = fissures.Count(f => f.Tier == FissureTier.Axi);
+        }
+
+        private void UpdateEndlessFissureTotals(IReadOnlyCollection<Fissure> fissures) {
             endlessCount.Text = fissures.Count(f => f.IsEndless).ToString();
-            endlessSummary.Lith = fissures.Count(f => f.IsEndless && f.Tier == FissureTier.LITH);
-            endlessSummary.Meso = fissures.Count(f => f.IsEndless && f.Tier == FissureTier.MESO);
-            endlessSummary.Neo = fissures.Count(f => f.IsEndless && f.Tier == FissureTier.NEO);
-            endlessSummary.Axi = fissures.Count(f => f.IsEndless && f.Tier == FissureTier.AXI);
+            endlessSummary.Lith = fissures.Count(f => f.IsEndless && f.Tier == FissureTier.Lith);
+            endlessSummary.Meso = fissures.Count(f => f.IsEndless && f.Tier == FissureTier.Meso);
+            endlessSummary.Neo = fissures.Count(f => f.IsEndless && f.Tier == FissureTier.Neo);
+            endlessSummary.Axi = fissures.Count(f => f.IsEndless && f.Tier == FissureTier.Axi);
         }
 
         private FissureControl GetOrCreateFissureControl(string id) {
@@ -87,7 +94,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         /// of valid IDs.
         /// </summary>
         /// <param name="validIds">List of valid IDs.</param>
-        private void RemoveObsoleteFissureControls(List<string> validIds) {
+        private void RemoveObsoleteFissureControls(IReadOnlyCollection<string> validIds) {
             // ToArray creates a copy that is necessary to avoid modifying the list during enumeration.
             foreach (var id in idMap.Keys.ToArray()) {
                 if (validIds.Contains(id)) continue;

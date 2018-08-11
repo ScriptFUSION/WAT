@@ -1,17 +1,24 @@
-﻿namespace ScriptFUSION.WarframeAlertTracker.Warframe {
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
-    internal enum MissionType {
-        UNKNOWN,
-        MT_CAPTURE,
-        MT_DEFENSE,
-        MT_EXCAVATE,
-        MT_EXTERMINATION,
-        MT_HIVE,
-        MT_INTEL,
-        MT_MOBILE_DEFENSE,
-        MT_RESCUE,
-        MT_SABOTAGE,
-        MT_SURVIVAL,
-        MT_TERRITORY,
+namespace ScriptFUSION.WarframeAlertTracker.Warframe {
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    internal enum MissionType : byte {
+        Unknown,
+        Any,
+        AnyEndless,
+
+        Capture = byte.MaxValue / 8,
+        Defense,
+        Excavation,
+        Extermination,
+        Hive,
+        Interception,
+        MobileDefense,
+        Rescue,
+        Sabotage,
+        Spy,
+        Survival,
     }
 }

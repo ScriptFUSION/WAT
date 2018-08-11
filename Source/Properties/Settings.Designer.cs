@@ -22,5 +22,16 @@ namespace ScriptFUSION.WarframeAlertTracker.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::ScriptFUSION.WarframeAlertTracker.Alerts.AlertCollection Alerts {
+            get {
+                return ((global::ScriptFUSION.WarframeAlertTracker.Alerts.AlertCollection)(this["Alerts"]));
+            }
+            set {
+                this["Alerts"] = value;
+            }
+        }
     }
 }

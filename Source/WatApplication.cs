@@ -1,22 +1,41 @@
 ﻿using ScriptFUSION.WarframeAlertTracker.Forms;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 using ScriptFUSION.WarframeAlertTracker.Warframe;
+using ScriptFUSION.WarframeAlertTracker.Alerts;
 using System.Windows.Forms;
+using ScriptFUSION.WarframeAlertTracker.Properties;
 
 namespace ScriptFUSION.WarframeAlertTracker {
     internal sealed class WatApplication : ApplicationContext {
-        private WatForm WatForm { get; }
+        public CurrentWorldState CurrentWorldState { get; } = new CurrentWorldState(new WorldStateDownloader(Downloader));
 
-        private Downloader Downloader { get; } = new Downloader();
+        public AlertCollection AlertCollection
+        {
+            get => Settings.Default.Alerts;
+            set
+            {
+                Settings.Default.Alerts = value;
+
+                SaveSettings();
+            }
+        }
+
+        public SolNodesDownloader SolNodesDownloader { get; } = new SolNodesDownloader(Downloader);
+
+        public ImageRepository ImageRepository { get; } = new ImageRepository(new ResourceDownloader(Downloader));
+
+        private static Downloader Downloader { get; } = new Downloader();
 
         public WatApplication() {
-            WatForm = new WatForm(new WatForm.Dependencies() {
-                CurrentWorldState = new CurrentWorldState(new WorldStateDownloader(Downloader)),
-                SolNodesDownloader = new SolNodesDownloader(Downloader),
-                ImageRepository = new ImageRepository(new ResourceDownloader(Downloader)),
-            });
-            WatForm.FormClosed += delegate { ExitThread(); };
-            WatForm.Show();
+            var watForm = new WatForm(this);
+            watForm.FormClosed += delegate { ExitThread(); };
+            watForm.Show();
+
+            CurrentWorldState.DownloadIndefinitely();
+        }
+
+        private static void SaveSettings() {
+            Settings.Default.Save();
         }
     }
 }

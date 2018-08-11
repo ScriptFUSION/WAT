@@ -1,39 +1,36 @@
 ﻿using Newtonsoft.Json.Linq;
-using ScriptFUSION.WarframeAlertTracker.Resource;
 using ScriptFUSION.WarframeAlertTracker.Warframe;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace ScriptFUSION.WarframeAlertTracker.Forms {
     public partial class WatForm : Form {
-        private CurrentWorldState CurrentWorldState { get; }
+        private WatApplication Application { get; }
 
-        internal WatForm(Dependencies dependencies) {
+        internal WatForm(WatApplication application) {
             InitializeComponent();
 
-            var solNodes = dependencies.SolNodesDownloader.Download();
-            CurrentWorldState = dependencies.CurrentWorldState;
-            CurrentWorldState.Update += async worldState => Update(worldState.Fissures.ToList(), await solNodes);
-            CurrentWorldState.DownloadIndefinitely();
+            Application = application;
 
-            fissures.ImageRepository = dependencies.ImageRepository;
+            var solNodes = application.SolNodesDownloader.Download();
+            application.CurrentWorldState.Update +=
+                async worldState => Update(worldState.Fissures, await solNodes);
+
+            fissures.ImageRepository = application.ImageRepository;
         }
 
-        internal struct Dependencies {
-            public CurrentWorldState CurrentWorldState;
-            public SolNodesDownloader SolNodesDownloader;
-            public ImageRepository ImageRepository;
-        }
-
-        private void Update(List<Fissure> fissureList, JObject solNodes) {
+        private void Update(IReadOnlyCollection<Fissure> fissureList, JObject solNodes) {
             fissures.Update(fissureList, solNodes);
         }
 
         private void alerts_Click(object sender, EventArgs e) {
-            using (var form = new AlertsForm()) {
-                form.ShowDialog(this);
+            var alertCollection = Application.AlertCollection.Clone();
+
+            using (var form = new AlertsForm(Application.CurrentWorldState, alertCollection)) {
+                if (form.ShowDialog(this) == DialogResult.OK) {
+                    Application.AlertCollection = alertCollection;
+                }
             }
         }
     }

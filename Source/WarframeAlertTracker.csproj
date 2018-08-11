@@ -55,7 +55,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alerts\Alert.cs" />
+    <Compile Include="Alerts\AlertCollection.cs" />
+    <Compile Include="Alerts\AlertCollectionConverter.cs" />
+    <Compile Include="Alerts\AlertType.cs" />
+    <Compile Include="Alerts\MatchingRule.cs" />
     <Compile Include="Alerts\FissureAlert.cs" />
+    <Compile Include="Warframe\FissureTierParser.cs" />
+    <Compile Include="Warframe\MissionType.cs" />
+    <Compile Include="Warframe\MissionTypeFormatter.cs" />
+    <Compile Include="Warframe\FissureTierFormatter.cs" />
     <Compile Include="Controls\ControlEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -92,6 +100,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Drawing\Rgb.cs" />
+    <Compile Include="EnumExtension.cs" />
     <Compile Include="Forms\AlertsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +112,8 @@
     <Compile Include="Resource\ImageRepository.cs" />
     <Compile Include="Resource\ResourceDownloader.cs" />
     <Compile Include="Warframe\CurrentWorldState.cs" />
+    <Compile Include="Warframe\IWorldStateObject.cs" />
+    <Compile Include="Warframe\MissionTypeParser.cs" />
     <Compile Include="Warframe\SolNodesDownloader.cs" />
     <Compile Include="UnixTime.cs" />
     <Compile Include="Forms\WatForm.cs">
@@ -117,8 +128,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Warframe\FissureTier.cs" />
-    <Compile Include="Warframe\MissionName.cs" />
-    <Compile Include="Warframe\MissionType.cs" />
     <Compile Include="Warframe\WorldStateDownloader.cs" />
     <Compile Include="Warframe\WorldState.cs" />
     <EmbeddedResource Include="Controls\EndlessMarker.resx">

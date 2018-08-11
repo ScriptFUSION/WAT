@@ -24,8 +24,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         }
 
         internal void Update(Fissure fissure, JObject solNodes) {
-            relic.Caption = fissure.Tier.ToString();
-            type.Text = MissionName.FromType(fissure.Mission);
+            relic.Caption = fissure.Tier.ToString().ToUpperInvariant();
+            type.Text = MissionTypeFormatter.From(fissure.Mission);
             location.Text = solNodes[fissure.Node]["value"].ToString().Replace(" (", ", ").Replace(")", string.Empty)
                 + $"\n{solNodes[fissure.Node]["enemy"]}";
             endlessMarker.Visible = fissure.IsEndless;

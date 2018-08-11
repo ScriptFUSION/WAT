@@ -1,9 +1,12 @@
 ﻿namespace ScriptFUSION.WarframeAlertTracker.Warframe {
 
-    internal enum FissureTier {
-        LITH = 1,
-        MESO,
-        NEO,
-        AXI
+    internal enum FissureTier : byte {
+        Unknown,
+        Any,
+
+        Lith = byte.MaxValue / 8,
+        Meso,
+        Neo,
+        Axi
     }
 }
