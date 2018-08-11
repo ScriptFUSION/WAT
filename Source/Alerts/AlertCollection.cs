@@ -19,7 +19,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Alerts {
             var clone = new AlertCollection();
 
             foreach (var alert in Alerts) {
-                clone.Add(alert);
+                clone.Add(alert.Clone());
             }
 
             return clone;

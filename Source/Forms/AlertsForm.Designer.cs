@@ -24,11 +24,14 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlertsForm));
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Fissure",
-            "Lith excavation mission"}, -1);
+            "Lith excavation mission"}, 0);
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Fissure", 1);
             this.fissuresGroup = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.fissureExclude = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.fissureInclude = new System.Windows.Forms.Button();
             this.fissureTier = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,19 +41,19 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.alertsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeAlert = new System.Windows.Forms.ToolStripMenuItem();
             this.ok = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.alertsGroup = new System.Windows.Forms.GroupBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeAlert = new System.Windows.Forms.ToolStripMenuItem();
             this.fissuresGroup.SuspendLayout();
+            this.alertsMenu.SuspendLayout();
             this.alertsGroup.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // fissuresGroup
             // 
-            this.fissuresGroup.Controls.Add(this.button3);
+            this.fissuresGroup.Controls.Add(this.fissureExclude);
             this.fissuresGroup.Controls.Add(this.fissureInclude);
             this.fissuresGroup.Controls.Add(this.fissureTier);
             this.fissuresGroup.Controls.Add(this.label2);
@@ -63,22 +66,38 @@
             this.fissuresGroup.TabStop = false;
             this.fissuresGroup.Text = "Fissures";
             // 
-            // button3
+            // fissureExclude
             // 
-            this.button3.Location = new System.Drawing.Point(433, 18);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(56, 24);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Exclude";
-            this.button3.UseVisualStyleBackColor = true;
+            this.fissureExclude.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.fissureExclude.ImageIndex = 1;
+            this.fissureExclude.ImageList = this.imageList1;
+            this.fissureExclude.Location = new System.Drawing.Point(421, 19);
+            this.fissureExclude.Name = "fissureExclude";
+            this.fissureExclude.Size = new System.Drawing.Size(68, 24);
+            this.fissureExclude.TabIndex = 5;
+            this.fissureExclude.Text = "Exclude";
+            this.fissureExclude.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.fissureExclude.UseVisualStyleBackColor = true;
+            this.fissureExclude.Click += new System.EventHandler(this.fissureExclude_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "tick2.png");
+            this.imageList1.Images.SetKeyName(1, "cross2.png");
             // 
             // fissureInclude
             // 
-            this.fissureInclude.Location = new System.Drawing.Point(371, 18);
+            this.fissureInclude.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.fissureInclude.ImageIndex = 0;
+            this.fissureInclude.ImageList = this.imageList1;
+            this.fissureInclude.Location = new System.Drawing.Point(349, 19);
             this.fissureInclude.Name = "fissureInclude";
-            this.fissureInclude.Size = new System.Drawing.Size(56, 24);
+            this.fissureInclude.Size = new System.Drawing.Size(66, 24);
             this.fissureInclude.TabIndex = 4;
             this.fissureInclude.Text = "Include";
+            this.fissureInclude.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.fissureInclude.UseVisualStyleBackColor = true;
             this.fissureInclude.Click += new System.EventHandler(this.fissureInclude_Click);
             // 
@@ -86,7 +105,7 @@
             // 
             this.fissureTier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fissureTier.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.fissureTier.Location = new System.Drawing.Point(234, 20);
+            this.fissureTier.Location = new System.Drawing.Point(219, 20);
             this.fissureTier.Name = "fissureTier";
             this.fissureTier.Size = new System.Drawing.Size(121, 21);
             this.fissureTier.TabIndex = 3;
@@ -94,7 +113,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(201, 24);
+            this.label2.Location = new System.Drawing.Point(186, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 13);
             this.label2.TabIndex = 2;
@@ -103,7 +122,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 24);
+            this.label1.Location = new System.Drawing.Point(7, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 0;
@@ -113,7 +132,7 @@
             // 
             this.fissureMissionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fissureMissionType.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.fissureMissionType.Location = new System.Drawing.Point(62, 21);
+            this.fissureMissionType.Location = new System.Drawing.Point(55, 21);
             this.fissureMissionType.Name = "fissureMissionType";
             this.fissureMissionType.Size = new System.Drawing.Size(121, 21);
             this.fissureMissionType.TabIndex = 1;
@@ -127,24 +146,29 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.alerts.ContextMenuStrip = this.contextMenuStrip1;
+            this.alerts.ContextMenuStrip = this.alertsMenu;
             this.alerts.FullRowSelect = true;
             this.alerts.GridLines = true;
             this.alerts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.alerts.HideSelection = false;
             listViewItem1.StateImageIndex = 0;
+            listViewItem2.StateImageIndex = 0;
             this.alerts.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem1,
+            listViewItem2});
             this.alerts.Location = new System.Drawing.Point(14, 22);
             this.alerts.Name = "alerts";
             this.alerts.Size = new System.Drawing.Size(475, 161);
+            this.alerts.SmallImageList = this.imageList1;
             this.alerts.TabIndex = 0;
             this.alerts.UseCompatibleStateImageBehavior = false;
             this.alerts.View = System.Windows.Forms.View.Details;
+            this.alerts.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.alerts_ItemChecked);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Type";
+            this.columnHeader1.Width = 73;
             // 
             // columnHeader2
             // 
@@ -155,6 +179,20 @@
             // 
             this.columnHeader3.Text = "Match";
             this.columnHeader3.Width = 260;
+            // 
+            // alertsMenu
+            // 
+            this.alertsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeAlert});
+            this.alertsMenu.Name = "alertsMenu";
+            this.alertsMenu.Size = new System.Drawing.Size(118, 26);
+            // 
+            // removeAlert
+            // 
+            this.removeAlert.Name = "removeAlert";
+            this.removeAlert.Size = new System.Drawing.Size(117, 22);
+            this.removeAlert.Text = "Remove";
+            this.removeAlert.Click += new System.EventHandler(this.removeAlert_Click);
             // 
             // ok
             // 
@@ -189,20 +227,6 @@
             this.alertsGroup.TabStop = false;
             this.alertsGroup.Text = "Alerts";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeAlert});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 26);
-            // 
-            // removeAlert
-            // 
-            this.removeAlert.Name = "removeAlert";
-            this.removeAlert.Size = new System.Drawing.Size(117, 22);
-            this.removeAlert.Text = "Remove";
-            this.removeAlert.Click += new System.EventHandler(this.removeAlert_Click);
-            // 
             // AlertsForm
             // 
             this.AcceptButton = this.ok;
@@ -222,8 +246,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AlertsForm_FormClosing);
             this.fissuresGroup.ResumeLayout(false);
             this.fissuresGroup.PerformLayout();
+            this.alertsMenu.ResumeLayout(false);
             this.alertsGroup.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -243,8 +267,9 @@
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.GroupBox alertsGroup;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button fissureExclude;
+        private System.Windows.Forms.ContextMenuStrip alertsMenu;
         private System.Windows.Forms.ToolStripMenuItem removeAlert;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

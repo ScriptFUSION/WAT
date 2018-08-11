@@ -11,7 +11,7 @@ namespace ScriptFUSION.WarframeAlertTracker {
 
         public AlertCollection AlertCollection
         {
-            get => Settings.Default.Alerts;
+            get => Settings.Default.Alerts ?? new AlertCollection();
             set
             {
                 Settings.Default.Alerts = value;

@@ -43,11 +43,11 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             alerts.Items.Clear();
 
             foreach (var alert in Alerts) {
-                var item = alerts.Items.Add(alert.Type.ToString());
-                item.Tag = alert;
-                item.Checked = alert.Enabled;
-
-                item.SubItems.AddRange(new[] { alert.Description, string.Empty });
+                alerts.Items.Add(new ListViewItem(alert.Type.ToString(), (int)alert.MatchingRule) {
+                    Tag = alert,
+                    Checked = alert.Enabled,
+                    SubItems = { alert.Description, string.Empty }
+                });
             }
 
             if (CurrentWorldState.CurrentState != null) {
@@ -57,14 +57,29 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             alerts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+        private static Alert ToAlert(ListViewItem item) {
+            return (Alert)item.Tag;
+        }
+
         private void AlertsForm_FormClosing(object sender, FormClosingEventArgs e) {
             CurrentWorldState.Update -= OnWorldStateUpdate;
         }
 
         private void OnWorldStateUpdate(WorldState worldState) {
             foreach (ListViewItem item in alerts.Items) {
-                item.SubItems[2].Text = worldState.WorldStateObjects.Any(o => o.Matches((Alert)item.Tag)) ? "Yes" : "No";
+                item.SubItems[2].Text = worldState.WorldStateObjects.Any(o => o.Matches(ToAlert(item))) ? "Yes" : "No";
             }
+        }
+
+        private void CreateFissureAlert(MatchingRule matchingRule) {
+            Alerts.Add(new FissureAlert(
+                (MissionType)((ComboItem)fissureMissionType.SelectedItem).Member,
+                (FissureTier)((ComboItem)fissureTier.SelectedItem).Member
+            ) {
+                MatchingRule = matchingRule
+            });
+
+            PopulateAlerts();
         }
 
         private void ok_Click(object sender, EventArgs e) {
@@ -72,20 +87,23 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
         }
 
         private void fissureInclude_Click(object sender, EventArgs e) {
-            Alerts.Add(new FissureAlert(
-                (MissionType)((ComboItem)fissureMissionType.SelectedItem).Member,
-                (FissureTier)((ComboItem)fissureTier.SelectedItem).Member
-            ));
+            CreateFissureAlert(MatchingRule.Include);
+        }
 
-            PopulateAlerts();
+        private void fissureExclude_Click(object sender, EventArgs e) {
+            CreateFissureAlert(MatchingRule.Exclude);
         }
 
         private void removeAlert_Click(object sender, EventArgs e) {
             foreach (ListViewItem item in alerts.SelectedItems) {
-                Alerts.Remove((Alert)item.Tag);
+                Alerts.Remove(ToAlert(item));
             }
 
             PopulateAlerts();
+        }
+
+        private void alerts_ItemChecked(object sender, ItemCheckedEventArgs e) {
+            ToAlert(e.Item).Enabled = e.Item.Checked;
         }
 
         private class ComboItem {

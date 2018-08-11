@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -30,7 +31,16 @@ namespace ScriptFUSION.WarframeAlertTracker.Alerts {
         }
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) {
-            return JsonConvert.SerializeObject(value);
+            var str = new StringWriter();
+            var writer = new JsonTextWriter(str) {
+                Formatting = Formatting.Indented,
+                Indentation = 1,
+                IndentChar = '\t',
+            };
+
+            JsonSerializer.CreateDefault().Serialize(writer, value);
+
+            return str.ToString();
         }
     }
 }

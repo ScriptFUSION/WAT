@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using ScriptFUSION.WarframeAlertTracker.Warframe;
 
 namespace ScriptFUSION.WarframeAlertTracker.Alerts {
     internal abstract class Alert {
@@ -12,8 +11,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Alerts {
 
         public MatchingRule MatchingRule { get; set; }
 
-        public bool Matches(IWorldStateObject worldStateObject) {
-            return worldStateObject.Matches(this);
+        public Alert Clone() {
+            return (Alert)MemberwiseClone();
         }
     }
 }
