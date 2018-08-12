@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using ScriptFUSION.WarframeAlertTracker.Warframe;
@@ -83,7 +84,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                 return idMap[id];
             }
 
-            var fissureControl = new FissureControl { ImageRepository = ImageRepository };
+            var fissureControl = new FissureControl {
+                ImageRepository = ImageRepository,
+                Margin = Padding.Empty,
+            };
             idMap.Add(id, fissureControl);
 
             return fissureControl;
@@ -102,6 +106,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                 table.Controls.Remove(idMap[id]);
                 idMap.Remove(id);
             }
+        }
+
+        private void borderPanel_Paint(object sender, PaintEventArgs e) {
+            var rect = Rectangle.Truncate(e.Graphics.VisibleClipBounds);
+            ControlPaint.DrawBorder(e.Graphics, rect, SystemColors.ControlDark, ButtonBorderStyle.Solid);
+
+            rect.Inflate(-1, -1);
+            ControlPaint.DrawBorder(e.Graphics, rect, SystemColors.ControlLightLight, ButtonBorderStyle.Solid);
         }
     }
 }

@@ -54,12 +54,12 @@
             // countdownClock
             // 
             this.countdownClock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.countdownClock.BackColor = System.Drawing.SystemColors.Control;
+            this.countdownClock.BackColor = System.Drawing.Color.Transparent;
             this.countdownClock.ClockFaceColour = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(63)))));
             this.countdownClock.CountdownTo = new System.DateTime(((long)(0)));
             this.countdownClock.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.countdownClock.ForeColor = System.Drawing.Color.Honeydew;
-            this.countdownClock.Location = new System.Drawing.Point(261, 8);
+            this.countdownClock.Location = new System.Drawing.Point(259, 8);
             this.countdownClock.Name = "countdownClock";
             this.countdownClock.Size = new System.Drawing.Size(80, 80);
             this.countdownClock.StrokeColour = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(3)))));
@@ -69,7 +69,7 @@
             // endlessMarker
             // 
             this.endlessMarker.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endlessMarker.Location = new System.Drawing.Point(103, 69);
+            this.endlessMarker.Location = new System.Drawing.Point(102, 68);
             this.endlessMarker.Name = "endlessMarker";
             this.endlessMarker.Size = new System.Drawing.Size(90, 22);
             this.endlessMarker.TabIndex = 4;
