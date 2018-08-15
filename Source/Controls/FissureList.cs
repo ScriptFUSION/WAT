@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using ScriptFUSION.WarframeAlertTracker.Warframe;
 using Newtonsoft.Json.Linq;
+using ScriptFUSION.WarframeAlertTracker.Alerts;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
@@ -14,6 +15,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
         /// Maintains a mapping between an id and a FissureControl.
         /// </summary>
         private readonly Dictionary<string, FissureControl> idMap = new Dictionary<string, FissureControl>();
+
+        private readonly Dictionary<FissureControl, Fissure> fissureMap = new Dictionary<FissureControl, Fissure>();
 
         internal ImageRepository ImageRepository
         {
@@ -48,6 +51,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                 if (table.GetRow(fissureControl) != ids.Count) {
                     // Adding a control already added just causes it to move.
                     table.Controls.Add(fissureControl, 0, ids.Count);
+
+                    fissureMap[fissureControl] = fissure;
                 }
 
                 ids.Add(fissure.Id);
@@ -56,6 +61,12 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             RemoveObsoleteFissureControls(ids);
 
             UpdateTotals(fissures);
+        }
+
+        internal void Update(AlertCollection alerts) {
+            foreach (FissureControl fissureControl in table.Controls) {
+                fissureControl.Update(fissureMap[fissureControl], alerts);
+            }
         }
 
         private void UpdateTotals(IReadOnlyCollection<Fissure> fissures) {
@@ -104,12 +115,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                 if (validIds.Contains(id)) continue;
 
                 table.Controls.Remove(idMap[id]);
+                fissureMap.Remove(idMap[id]);
                 idMap.Remove(id);
             }
         }
 
         private void borderPanel_Paint(object sender, PaintEventArgs e) {
-            var rect = Rectangle.Truncate(e.Graphics.VisibleClipBounds);
+            var rect = borderPanel.ClientRectangle;
+
             ControlPaint.DrawBorder(e.Graphics, rect, SystemColors.ControlDark, ButtonBorderStyle.Solid);
 
             rect.Inflate(-1, -1);

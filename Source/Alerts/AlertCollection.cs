@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using ScriptFUSION.WarframeAlertTracker.Warframe;
 
 namespace ScriptFUSION.WarframeAlertTracker.Alerts {
     [TypeConverter(typeof(AlertCollectionConverter))]
@@ -13,6 +15,17 @@ namespace ScriptFUSION.WarframeAlertTracker.Alerts {
 
         public void Remove(Alert alert) {
             Alerts.Remove(alert);
+        }
+
+        public bool Matches(IWorldStateObject worldStateObject) {
+            return
+                Alerts
+                    .Where(alert => alert.Enabled && alert.MatchingRule == MatchingRule.Include)
+                    .Any(worldStateObject.Matches)
+                && !Alerts
+                    .Where(alert => alert.Enabled && alert.MatchingRule == MatchingRule.Exclude)
+                    .Any(worldStateObject.Matches)
+            ;
         }
 
         public AlertCollection Clone() {

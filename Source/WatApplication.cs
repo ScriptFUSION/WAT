@@ -1,4 +1,5 @@
-﻿using ScriptFUSION.WarframeAlertTracker.Forms;
+﻿using System;
+using ScriptFUSION.WarframeAlertTracker.Forms;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 using ScriptFUSION.WarframeAlertTracker.Warframe;
 using ScriptFUSION.WarframeAlertTracker.Alerts;
@@ -7,6 +8,9 @@ using ScriptFUSION.WarframeAlertTracker.Properties;
 
 namespace ScriptFUSION.WarframeAlertTracker {
     internal sealed class WatApplication : ApplicationContext {
+
+        public event Action<AlertCollection> AlertsUpdate;
+
         public CurrentWorldState CurrentWorldState { get; } = new CurrentWorldState(new WorldStateDownloader(Downloader));
 
         public AlertCollection AlertCollection
@@ -17,6 +21,8 @@ namespace ScriptFUSION.WarframeAlertTracker {
                 Settings.Default.Alerts = value;
 
                 SaveSettings();
+
+                AlertsUpdate?.Invoke(value);
             }
         }
 

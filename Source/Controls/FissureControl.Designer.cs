@@ -34,6 +34,7 @@
             // type
             // 
             this.type.AutoSize = true;
+            this.type.BackColor = System.Drawing.Color.Transparent;
             this.type.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.type.Location = new System.Drawing.Point(100, 8);
             this.type.Name = "type";
@@ -44,6 +45,7 @@
             // location
             // 
             this.location.AutoSize = true;
+            this.location.BackColor = System.Drawing.Color.Transparent;
             this.location.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.location.Location = new System.Drawing.Point(100, 29);
             this.location.Name = "location";
@@ -68,6 +70,7 @@
             // 
             // endlessMarker
             // 
+            this.endlessMarker.BackColor = System.Drawing.Color.Transparent;
             this.endlessMarker.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endlessMarker.Location = new System.Drawing.Point(102, 68);
             this.endlessMarker.Name = "endlessMarker";
@@ -76,6 +79,7 @@
             // 
             // relic
             // 
+            this.relic.BackColor = System.Drawing.Color.Transparent;
             this.relic.Caption = "LITH";
             this.relic.CaptionOffset = new System.Drawing.Point(3, 3);
             this.relic.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -46,10 +46,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // 
             this.fissureCount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fissureCount.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fissureCount.Location = new System.Drawing.Point(49, 0);
+            this.fissureCount.Location = new System.Drawing.Point(64, 0);
             this.fissureCount.Margin = new System.Windows.Forms.Padding(0);
             this.fissureCount.Name = "fissureCount";
-            this.fissureCount.Size = new System.Drawing.Size(19, 34);
+            this.fissureCount.Size = new System.Drawing.Size(25, 34);
             this.fissureCount.TabIndex = 2;
             this.fissureCount.Text = "0";
             this.fissureCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -60,7 +60,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 34);
+            this.label1.Size = new System.Drawing.Size(64, 34);
             this.label1.TabIndex = 2;
             this.label1.Text = "Fissures";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -73,7 +73,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.71429F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 168F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.fissureCount, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.summary, 2, 0);
@@ -91,7 +91,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // summary
             // 
             this.summary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.summary.Location = new System.Drawing.Point(68, 0);
+            this.summary.Location = new System.Drawing.Point(89, 0);
             this.summary.Margin = new System.Windows.Forms.Padding(0);
             this.summary.Name = "summary";
             this.summary.Size = new System.Drawing.Size(125, 34);
@@ -102,10 +102,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(193, 0);
+            this.label2.Location = new System.Drawing.Point(214, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 34);
+            this.label2.Size = new System.Drawing.Size(64, 34);
             this.label2.TabIndex = 3;
             this.label2.Text = "Endless";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -114,10 +114,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // 
             this.endlessCount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.endlessCount.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endlessCount.Location = new System.Drawing.Point(242, 0);
+            this.endlessCount.Location = new System.Drawing.Point(278, 0);
             this.endlessCount.Margin = new System.Windows.Forms.Padding(0);
             this.endlessCount.Name = "endlessCount";
-            this.endlessCount.Size = new System.Drawing.Size(19, 34);
+            this.endlessCount.Size = new System.Drawing.Size(25, 34);
             this.endlessCount.TabIndex = 4;
             this.endlessCount.Text = "0";
             this.endlessCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -125,10 +125,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // endlessSummary
             // 
             this.endlessSummary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.endlessSummary.Location = new System.Drawing.Point(261, 0);
+            this.endlessSummary.Location = new System.Drawing.Point(303, 0);
             this.endlessSummary.Margin = new System.Windows.Forms.Padding(0);
             this.endlessSummary.Name = "endlessSummary";
-            this.endlessSummary.Size = new System.Drawing.Size(170, 34);
+            this.endlessSummary.Size = new System.Drawing.Size(128, 34);
             this.endlessSummary.TabIndex = 5;
             this.endlessSummary.Text = "relicSummary1";
             this.endlessSummary.ZeroColor = System.Drawing.Color.Firebrick;
@@ -136,6 +136,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // scrollPanel
             // 
             this.scrollPanel.AutoScroll = true;
+            this.scrollPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.scrollPanel.Controls.Add(this.table);
             this.scrollPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scrollPanel.Location = new System.Drawing.Point(2, 2);
@@ -147,6 +148,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // 
             this.table.AutoScrollMargin = new System.Drawing.Size(30, 0);
             this.table.AutoSize = true;
+            this.table.BackColor = System.Drawing.SystemColors.Control;
             this.table.ColumnCount = 1;
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.table.Controls.Add(this.dummy, 0, 0);
@@ -161,6 +163,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // 
             // dummy
             // 
+            this.dummy.Active = true;
             this.dummy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dummy.AutoSize = true;

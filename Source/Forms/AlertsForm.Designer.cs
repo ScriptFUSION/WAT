@@ -59,6 +59,7 @@
             this.fissuresGroup.Controls.Add(this.label2);
             this.fissuresGroup.Controls.Add(this.label1);
             this.fissuresGroup.Controls.Add(this.fissureMissionType);
+            this.fissuresGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fissuresGroup.Location = new System.Drawing.Point(12, 12);
             this.fissuresGroup.Name = "fissuresGroup";
             this.fissuresGroup.Size = new System.Drawing.Size(501, 55);

@@ -3,6 +3,7 @@ using ScriptFUSION.WarframeAlertTracker.Warframe;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ScriptFUSION.WarframeAlertTracker.Alerts;
 
 namespace ScriptFUSION.WarframeAlertTracker.Forms {
     public partial class WatForm : Form {
@@ -15,13 +16,20 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
 
             var solNodes = application.SolNodesDownloader.Download();
             application.CurrentWorldState.Update +=
-                async worldState => Update(worldState.Fissures, await solNodes);
+                async worldState => OnWorldStateUpdate(worldState.Fissures, await solNodes);
+
+            application.AlertsUpdate += OnAlertsUpdate;
 
             fissures.ImageRepository = application.ImageRepository;
         }
 
-        private void Update(IReadOnlyCollection<Fissure> fissureList, JObject solNodes) {
+        private void OnWorldStateUpdate(IReadOnlyCollection<Fissure> fissureList, JObject solNodes) {
             fissures.Update(fissureList, solNodes);
+            fissures.Update(Application.AlertCollection);
+        }
+
+        private void OnAlertsUpdate(AlertCollection alertsCollection) {
+            fissures.Update(alertsCollection);
         }
 
         private void alerts_Click(object sender, EventArgs e) {
