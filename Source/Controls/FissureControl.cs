@@ -26,7 +26,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
         }
 
-        public Color ActiveColour { get; } = Rgb.Interpolate(SystemColors.Control, Color.CornflowerBlue, .25F);
+        public Color ActiveColour { get; } = Color.FromArgb(byte.MaxValue / 6, Color.CornflowerBlue);
 
         public FissureControl() {
             InitializeComponent();
@@ -36,25 +36,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             relic.Paint += Relic_Paint;
         }
 
-        protected override void OnPaintBackground(PaintEventArgs e) {
-            base.OnPaintBackground(e);
-
-            if (Active) {
-                using (var brush = new SolidBrush(ActiveColour)) {
-                    e.Graphics.FillRectangle(brush, ClientRectangle);
-                }
-            }
-        }
-
         protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
 
-            var baseColour = Active ? ActiveColour : BackColor;
             var rect = ClientRectangle;
+            var penWidth = Active ? 2 : 1;
+            rect.Offset(penWidth / 2, penWidth / 2);
 
-            if (Active) rect.Inflate(-1, -1);
-
-            using (var pen = new Pen(ControlPaint.Dark(baseColour, .01F))) {
+            using (var pen = new Pen(SystemColors.ControlDark, penWidth)) {
                 e.Graphics.DrawLines(pen, new[]
                 {
                     new Point(rect.X, rect.Height - 1),
@@ -63,13 +52,19 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
                 });
             }
 
-            using (var pen = new Pen(ControlPaint.LightLight(baseColour))) {
+            using (var pen = new Pen(SystemColors.ControlLightLight, penWidth)) {
                 e.Graphics.DrawLines(pen, new[]
                 {
                     new Point(rect.Width - 1, rect.Y),
                     rect.Location,
                     new Point(rect.X, rect.Height - 1),
                 });
+            }
+
+            if (Active) {
+                using (var brush = new SolidBrush(ActiveColour)) {
+                    e.Graphics.FillRectangle(brush, ClientRectangle);
+                }
             }
         }
 
