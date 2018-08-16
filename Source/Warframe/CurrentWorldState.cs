@@ -6,9 +6,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Warframe {
     /// Maintains a reference to the current world state by continuously downloading updates.
     /// </summary>
     internal sealed class CurrentWorldState {
-        public delegate void UpdateDelegate(WorldState worldState);
-
-        public event UpdateDelegate Update;
+        public event Action<WorldState> Update;
 
         public WorldState CurrentState { get; private set; }
 

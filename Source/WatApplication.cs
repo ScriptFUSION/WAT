@@ -8,7 +8,6 @@ using ScriptFUSION.WarframeAlertTracker.Properties;
 
 namespace ScriptFUSION.WarframeAlertTracker {
     internal sealed class WatApplication : ApplicationContext {
-
         public event Action<AlertCollection> AlertsUpdate;
 
         public CurrentWorldState CurrentWorldState { get; } = new CurrentWorldState(new WorldStateDownloader(Downloader));

@@ -163,7 +163,6 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             // 
             // dummy
             // 
-            this.dummy.Active = true;
             this.dummy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dummy.AutoSize = true;
