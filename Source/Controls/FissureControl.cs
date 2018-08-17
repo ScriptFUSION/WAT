@@ -6,7 +6,6 @@ using ScriptFUSION.WarframeAlertTracker.Warframe;
 using Newtonsoft.Json.Linq;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 using ScriptFUSION.WarframeAlertTracker.Alerts;
-using ScriptFUSION.WarframeAlertTracker.Drawing;
 
 namespace ScriptFUSION.WarframeAlertTracker.Controls {
     public partial class FissureControl : UserControl {
@@ -26,7 +25,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
         }
 
-        public Color ActiveColour { get; } = Color.FromArgb(byte.MaxValue / 6, Color.CornflowerBlue);
+        public Color ActiveColour { get; } = Color.FromArgb(byte.MaxValue / 5, Color.CornflowerBlue);
 
         public FissureControl() {
             InitializeComponent();

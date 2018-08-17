@@ -41,7 +41,7 @@
             this.fissures.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fissures.Location = new System.Drawing.Point(12, 18);
             this.fissures.Name = "fissures";
-            this.fissures.Size = new System.Drawing.Size(449, 433);
+            this.fissures.Size = new System.Drawing.Size(449, 425);
             this.fissures.TabIndex = 2;
             // 
             // toolStrip1
@@ -67,7 +67,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.alertsCount});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 464);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 456);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(473, 22);
             this.statusStrip1.TabIndex = 10;
@@ -89,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 486);
+            this.ClientSize = new System.Drawing.Size(473, 478);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.fissures);

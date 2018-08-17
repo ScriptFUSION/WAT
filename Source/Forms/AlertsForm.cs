@@ -42,7 +42,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
         private void PopulateAlerts() {
             alerts.Items.Clear();
 
-            foreach (var alert in Alerts) {
+            foreach (var alert in Alerts.OrderBy(alert => alert.MatchingRule)) {
                 alerts.Items.Add(new ListViewItem(alert.Type.ToString(), (int)alert.MatchingRule) {
                     Tag = alert,
                     Checked = alert.Enabled,
