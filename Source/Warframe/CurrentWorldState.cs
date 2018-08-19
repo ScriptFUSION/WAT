@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ScriptFUSION.WarframeAlertTracker.Warframe {
@@ -7,6 +9,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Warframe {
     /// </summary>
     internal sealed class CurrentWorldState {
         public event Action<WorldState> Update;
+
+        public event Action<IWorldStateObject> NewObject;
 
         public WorldState CurrentState { get; private set; }
 
@@ -40,9 +44,22 @@ namespace ScriptFUSION.WarframeAlertTracker.Warframe {
             var worldState = await Downloader.Download();
 
             if (CurrentState == null || worldState?.Time > CurrentState.Time) {
-                CurrentState = worldState;
-                Update?.Invoke(worldState);
+                UpdateWorldState(CurrentState, worldState);
             }
+        }
+
+        private void UpdateWorldState(WorldState oldState, WorldState newState) {
+            CurrentState = newState;
+            Update?.Invoke(newState);
+
+            foreach (var worldStateObject in DetectNewObjects(oldState, newState)) {
+                NewObject?.Invoke(worldStateObject);
+            }
+        }
+
+        private static IEnumerable<IWorldStateObject> DetectNewObjects(WorldState oldState, WorldState newState) {
+            return oldState == null ? Enumerable.Empty<IWorldStateObject>() :
+                newState.WorldStateObjects.Except(oldState.WorldStateObjects, new WorldStateObjectComparer());
         }
     }
 }

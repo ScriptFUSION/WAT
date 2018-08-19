@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,6 +73,7 @@
     <Compile Include="Forms\NotificationOptionsForm.Designer.cs">
       <DependentUpon>NotificationOptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notifier.cs" />
     <Compile Include="Warframe\FissureTierParser.cs" />
     <Compile Include="Warframe\MissionType.cs" />
     <Compile Include="Warframe\MissionTypeFormatter.cs" />
@@ -135,6 +137,7 @@
       <DependentUpon>WatForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Warframe\Fissure.cs" />
+    <Compile Include="Warframe\WorldStateObjectComparer.cs" />
     <Compile Include="WatApplication.cs" />
     <Compile Include="Downloader.cs" />
     <Compile Include="Program.cs" />

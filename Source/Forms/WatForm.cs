@@ -16,9 +16,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
 
             Application = application;
 
-            var solNodes = application.SolNodesDownloader.Download();
             application.CurrentWorldState.Update +=
-                async worldState => OnWorldStateUpdate(worldState.Fissures, await solNodes);
+                async worldState => OnWorldStateUpdate(worldState.Fissures, await application.SolNodes);
 
             application.AlertsUpdate += OnAlertsUpdate;
 

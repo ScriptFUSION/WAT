@@ -39,9 +39,9 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
         /// <summary>
         /// Gets or sets the animation time in seconds.
         /// </summary>
-        private double AnimationTime { get; } = .5;
+        private double AnimationTime { get; } = .45;
 
-        private double HoldTime { get; } = 2.5;
+        private double HoldTime { get; } = 2.75;
 
         public NotificationForm(Control childControl) {
             InitializeComponent();
@@ -106,8 +106,9 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             try {
                 await Animate();
             }
+            // Owning form has been disposed.
             catch (ObjectDisposedException) {
-                // Continue closing the form.
+                // Abort animation.
             }
 
             Close();

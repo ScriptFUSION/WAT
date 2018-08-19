@@ -58,7 +58,6 @@
             // 
             // alerts
             // 
-            this.alerts.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.alerts.Name = "alerts";
             this.alerts.Size = new System.Drawing.Size(41, 22);
             this.alerts.Text = "Alerts";
@@ -91,7 +90,6 @@
             // notifications
             // 
             this.notifications.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.notifications.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.notifications.Name = "notifications";
             this.notifications.Size = new System.Drawing.Size(79, 22);
             this.notifications.Text = "Notifications";

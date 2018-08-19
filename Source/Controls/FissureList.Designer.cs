@@ -28,14 +28,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             this.fissureCount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.summary = new ScriptFUSION.WarframeAlertTracker.Controls.RelicSummary();
             this.label2 = new System.Windows.Forms.Label();
             this.endlessCount = new System.Windows.Forms.Label();
-            this.endlessSummary = new ScriptFUSION.WarframeAlertTracker.Controls.RelicSummary();
             this.scrollPanel = new System.Windows.Forms.Panel();
             this.table = new System.Windows.Forms.TableLayoutPanel();
-            this.dummy = new ScriptFUSION.WarframeAlertTracker.Controls.FissureControl();
             this.borderPanel = new System.Windows.Forms.Panel();
+            this.dummy = new ScriptFUSION.WarframeAlertTracker.Controls.FissureControl();
+            this.summary = new ScriptFUSION.WarframeAlertTracker.Controls.RelicSummary();
+            this.endlessSummary = new ScriptFUSION.WarframeAlertTracker.Controls.RelicSummary();
             this.tableLayoutPanel1.SuspendLayout();
             this.scrollPanel.SuspendLayout();
             this.table.SuspendLayout();
@@ -88,17 +88,6 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             this.tableLayoutPanel1.Size = new System.Drawing.Size(431, 34);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // summary
-            // 
-            this.summary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.summary.Location = new System.Drawing.Point(89, 0);
-            this.summary.Margin = new System.Windows.Forms.Padding(0);
-            this.summary.Name = "summary";
-            this.summary.Size = new System.Drawing.Size(125, 34);
-            this.summary.TabIndex = 2;
-            this.summary.Text = "relicSummary1";
-            this.summary.ZeroColor = System.Drawing.Color.Firebrick;
-            // 
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -121,17 +110,6 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             this.endlessCount.TabIndex = 4;
             this.endlessCount.Text = "0";
             this.endlessCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // endlessSummary
-            // 
-            this.endlessSummary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.endlessSummary.Location = new System.Drawing.Point(303, 0);
-            this.endlessSummary.Margin = new System.Windows.Forms.Padding(0);
-            this.endlessSummary.Name = "endlessSummary";
-            this.endlessSummary.Size = new System.Drawing.Size(128, 34);
-            this.endlessSummary.TabIndex = 5;
-            this.endlessSummary.Text = "relicSummary1";
-            this.endlessSummary.ZeroColor = System.Drawing.Color.Firebrick;
             // 
             // scrollPanel
             // 
@@ -161,6 +139,17 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             this.table.Size = new System.Drawing.Size(427, 97);
             this.table.TabIndex = 0;
             // 
+            // borderPanel
+            // 
+            this.borderPanel.Controls.Add(this.scrollPanel);
+            this.borderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.borderPanel.Location = new System.Drawing.Point(0, 34);
+            this.borderPanel.Name = "borderPanel";
+            this.borderPanel.Padding = new System.Windows.Forms.Padding(2);
+            this.borderPanel.Size = new System.Drawing.Size(431, 311);
+            this.borderPanel.TabIndex = 1;
+            this.borderPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.borderPanel_Paint);
+            // 
             // dummy
             // 
             this.dummy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -173,16 +162,27 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             this.dummy.Size = new System.Drawing.Size(427, 97);
             this.dummy.TabIndex = 1;
             // 
-            // borderPanel
+            // summary
             // 
-            this.borderPanel.Controls.Add(this.scrollPanel);
-            this.borderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.borderPanel.Location = new System.Drawing.Point(0, 34);
-            this.borderPanel.Name = "borderPanel";
-            this.borderPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.borderPanel.Size = new System.Drawing.Size(431, 311);
-            this.borderPanel.TabIndex = 1;
-            this.borderPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.borderPanel_Paint);
+            this.summary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.summary.Location = new System.Drawing.Point(89, 0);
+            this.summary.Margin = new System.Windows.Forms.Padding(0);
+            this.summary.Name = "summary";
+            this.summary.Size = new System.Drawing.Size(125, 34);
+            this.summary.TabIndex = 2;
+            this.summary.Text = "relicSummary1";
+            this.summary.ZeroColor = System.Drawing.Color.Firebrick;
+            // 
+            // endlessSummary
+            // 
+            this.endlessSummary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.endlessSummary.Location = new System.Drawing.Point(303, 0);
+            this.endlessSummary.Margin = new System.Windows.Forms.Padding(0);
+            this.endlessSummary.Name = "endlessSummary";
+            this.endlessSummary.Size = new System.Drawing.Size(128, 34);
+            this.endlessSummary.TabIndex = 5;
+            this.endlessSummary.Text = "relicSummary1";
+            this.endlessSummary.ZeroColor = System.Drawing.Color.Firebrick;
             // 
             // FissureList
             // 
