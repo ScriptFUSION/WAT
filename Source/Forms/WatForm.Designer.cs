@@ -29,6 +29,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertsCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.notifications = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +48,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alerts});
+            this.alerts,
+            this.notifications});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(473, 25);
@@ -81,9 +83,19 @@
             // 
             // alertsCount
             // 
+            this.alertsCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.alertsCount.Name = "alertsCount";
-            this.alertsCount.Size = new System.Drawing.Size(13, 17);
+            this.alertsCount.Size = new System.Drawing.Size(14, 17);
             this.alertsCount.Text = "0";
+            // 
+            // notifications
+            // 
+            this.notifications.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.notifications.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.notifications.Name = "notifications";
+            this.notifications.Size = new System.Drawing.Size(79, 22);
+            this.notifications.Text = "Notifications";
+            this.notifications.Click += new System.EventHandler(this.notifications_Click);
             // 
             // WatForm
             // 
@@ -114,5 +126,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel alertsCount;
+        private System.Windows.Forms.ToolStripButton notifications;
     }
 }

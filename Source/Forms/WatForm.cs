@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ScriptFUSION.WarframeAlertTracker.Alerts;
+using ScriptFUSION.WarframeAlertTracker.Controls;
 
 namespace ScriptFUSION.WarframeAlertTracker.Forms {
     public partial class WatForm : Form {
@@ -42,6 +43,12 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
                 if (form.ShowDialog(this) == DialogResult.OK) {
                     Application.AlertCollection = alertCollection;
                 }
+            }
+        }
+
+        private async void notifications_Click(object sender, EventArgs e) {
+            using (var form = new NotificationOptionsForm(await FissureControl.CreateTestControl(Application.ImageRepository))) {
+                form.ShowDialog(this);
             }
         }
     }

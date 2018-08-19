@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,6 +34,15 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             Anchor |= AnchorStyles.Right;
 
             relic.Paint += Relic_Paint;
+        }
+
+        internal static async Task<FissureControl> CreateTestControl(ImageRepository imageRepository) {
+            return new FissureControl {
+                relic = { Image = await imageRepository.Lith },
+                countdownClock = { CountdownTo = DateTime.Now.AddHours(1.25) },
+                ImageRepository = imageRepository,
+                Active = true,
+            };
         }
 
         protected override void OnPaint(PaintEventArgs e) {
