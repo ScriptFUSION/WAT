@@ -53,8 +53,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             }
         }
 
-        private async void notifications_Click(object sender, EventArgs e) {
-            using (var form = new NotificationOptionsForm(await FissureControl.CreateTestControl(Application.ImageRepository))) {
+        private async void options_Click(object sender, EventArgs e) {
+            using (var form = new OptionsForm(await FissureControl.CreateTestControl(Application.ImageRepository))) {
                 form.ShowDialog(this);
             }
         }

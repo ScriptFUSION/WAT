@@ -49,10 +49,10 @@ namespace ScriptFUSION.WarframeAlertTracker {
                 return;
             }
 
-            Notify(await ControlFromWorldStateObject(worldStateObject));
+            Notify(await CreateControl(worldStateObject));
         }
 
-        private async Task<Control> ControlFromWorldStateObject(IWorldStateObject worldStateObject) {
+        private async Task<Control> CreateControl(IWorldStateObject worldStateObject) {
             switch (worldStateObject) {
                 case Fissure fissure:
                     var fissureControl = new FissureControl {

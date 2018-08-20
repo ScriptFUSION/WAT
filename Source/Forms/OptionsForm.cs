@@ -3,10 +3,10 @@ using ScriptFUSION.WarframeAlertTracker.Controls;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 
 namespace ScriptFUSION.WarframeAlertTracker.Forms {
-    public partial class NotificationOptionsForm : Form {
+    public partial class OptionsForm : Form {
         private readonly ImageRepository imageRepository;
 
-        public NotificationOptionsForm(FissureControl dummyFissureControl) {
+        public OptionsForm(FissureControl dummyFissureControl) {
             InitializeComponent();
 
             imageRepository = dummyFissureControl.ImageRepository;

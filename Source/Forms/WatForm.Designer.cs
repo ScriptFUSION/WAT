@@ -27,7 +27,7 @@
             this.fissures = new ScriptFUSION.WarframeAlertTracker.Controls.FissureList();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.alerts = new System.Windows.Forms.ToolStripButton();
-            this.notifications = new System.Windows.Forms.ToolStripButton();
+            this.options = new System.Windows.Forms.ToolStripButton();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertsCount = new System.Windows.Forms.ToolStripStatusLabel();
@@ -38,6 +38,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.homePageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.trayMenu.SuspendLayout();
@@ -58,7 +59,7 @@
             // 
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.alerts,
-            this.notifications});
+            this.options});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(473, 25);
@@ -72,13 +73,13 @@
             this.alerts.Text = "Alerts";
             this.alerts.Click += new System.EventHandler(this.alerts_Click);
             // 
-            // notifications
+            // options
             // 
-            this.notifications.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.notifications.Name = "notifications";
-            this.notifications.Size = new System.Drawing.Size(79, 22);
-            this.notifications.Text = "Notifications";
-            this.notifications.Click += new System.EventHandler(this.notifications_Click);
+            this.options.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.options.Name = "options";
+            this.options.Size = new System.Drawing.Size(53, 22);
+            this.options.Text = "Options";
+            this.options.Click += new System.EventHandler(this.options_Click);
             // 
             // statusBar
             // 
@@ -116,11 +117,12 @@
             this.trayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showMenuItem,
             this.alertsMenuItem,
+            this.optionsMenuItem,
             this.toolStripSeparator1,
             this.homePageMenuItem,
             this.exitMenuItem});
             this.trayMenu.Name = "trayMenu";
-            this.trayMenu.Size = new System.Drawing.Size(274, 120);
+            this.trayMenu.Size = new System.Drawing.Size(274, 142);
             // 
             // showMenuItem
             // 
@@ -134,7 +136,7 @@
             // 
             this.alertsMenuItem.Name = "alertsMenuItem";
             this.alertsMenuItem.Size = new System.Drawing.Size(273, 22);
-            this.alertsMenuItem.Text = "&Alerts";
+            this.alertsMenuItem.Text = "&Alerts...";
             this.alertsMenuItem.Click += new System.EventHandler(this.alerts_Click);
             // 
             // toolStripSeparator1
@@ -155,6 +157,13 @@
             this.exitMenuItem.Size = new System.Drawing.Size(273, 22);
             this.exitMenuItem.Text = "E&xit";
             this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
+            // 
+            // optionsMenuItem
+            // 
+            this.optionsMenuItem.Name = "optionsMenuItem";
+            this.optionsMenuItem.Size = new System.Drawing.Size(273, 22);
+            this.optionsMenuItem.Text = "&Options...";
+            this.optionsMenuItem.Click += new System.EventHandler(this.options_Click);
             // 
             // WatForm
             // 
@@ -186,7 +195,7 @@
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel alertsCount;
-        private System.Windows.Forms.ToolStripButton notifications;
+        private System.Windows.Forms.ToolStripButton options;
         private System.Windows.Forms.NotifyIcon trayIcon;
         private System.Windows.Forms.ContextMenuStrip trayMenu;
         private System.Windows.Forms.ToolStripMenuItem showMenuItem;
@@ -194,5 +203,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem homePageMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsMenuItem;
     }
 }
