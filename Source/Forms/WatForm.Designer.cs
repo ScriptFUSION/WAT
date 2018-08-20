@@ -23,15 +23,24 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.fissures = new ScriptFUSION.WarframeAlertTracker.Controls.FissureList();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolBar = new System.Windows.Forms.ToolStrip();
             this.alerts = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.notifications = new System.Windows.Forms.ToolStripButton();
+            this.statusBar = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertsCount = new System.Windows.Forms.ToolStripStatusLabel();
-            this.notifications = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.trayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alertsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.homePageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolBar.SuspendLayout();
+            this.statusBar.SuspendLayout();
+            this.trayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // fissures
@@ -45,16 +54,16 @@
             this.fissures.Size = new System.Drawing.Size(449, 425);
             this.fissures.TabIndex = 2;
             // 
-            // toolStrip1
+            // toolBar
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.alerts,
             this.notifications});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(473, 25);
-            this.toolStrip1.TabIndex = 9;
-            this.toolStrip1.Text = "toolStrip1";
+            this.toolBar.Location = new System.Drawing.Point(0, 0);
+            this.toolBar.Name = "toolBar";
+            this.toolBar.Size = new System.Drawing.Size(473, 25);
+            this.toolBar.TabIndex = 9;
+            this.toolBar.Text = "toolStrip1";
             // 
             // alerts
             // 
@@ -63,16 +72,24 @@
             this.alerts.Text = "Alerts";
             this.alerts.Click += new System.EventHandler(this.alerts_Click);
             // 
-            // statusStrip1
+            // notifications
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.notifications.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.notifications.Name = "notifications";
+            this.notifications.Size = new System.Drawing.Size(79, 22);
+            this.notifications.Text = "Notifications";
+            this.notifications.Click += new System.EventHandler(this.notifications_Click);
+            // 
+            // statusBar
+            // 
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.alertsCount});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 456);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(473, 22);
-            this.statusStrip1.TabIndex = 10;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusBar.Location = new System.Drawing.Point(0, 456);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(473, 22);
+            this.statusBar.TabIndex = 10;
+            this.statusBar.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
@@ -87,30 +104,75 @@
             this.alertsCount.Size = new System.Drawing.Size(14, 17);
             this.alertsCount.Text = "0";
             // 
-            // notifications
+            // trayIcon
             // 
-            this.notifications.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.notifications.Name = "notifications";
-            this.notifications.Size = new System.Drawing.Size(79, 22);
-            this.notifications.Text = "Notifications";
-            this.notifications.Click += new System.EventHandler(this.notifications_Click);
+            this.trayIcon.ContextMenuStrip = this.trayMenu;
+            this.trayIcon.Visible = true;
+            this.trayIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseClick);
+            this.trayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIcon_MouseClick);
+            // 
+            // trayMenu
+            // 
+            this.trayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showMenuItem,
+            this.alertsMenuItem,
+            this.toolStripSeparator1,
+            this.homePageMenuItem,
+            this.exitMenuItem});
+            this.trayMenu.Name = "trayMenu";
+            this.trayMenu.Size = new System.Drawing.Size(274, 120);
+            // 
+            // showMenuItem
+            // 
+            this.showMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.showMenuItem.Name = "showMenuItem";
+            this.showMenuItem.Size = new System.Drawing.Size(273, 22);
+            this.showMenuItem.Text = "&Show/Hide Warframe Alert Tracker";
+            this.showMenuItem.Click += new System.EventHandler(this.showMenuItem_Click);
+            // 
+            // alertsMenuItem
+            // 
+            this.alertsMenuItem.Name = "alertsMenuItem";
+            this.alertsMenuItem.Size = new System.Drawing.Size(273, 22);
+            this.alertsMenuItem.Text = "&Alerts";
+            this.alertsMenuItem.Click += new System.EventHandler(this.alerts_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(270, 6);
+            // 
+            // homePageMenuItem
+            // 
+            this.homePageMenuItem.Name = "homePageMenuItem";
+            this.homePageMenuItem.Size = new System.Drawing.Size(273, 22);
+            this.homePageMenuItem.Text = "&Home page";
+            this.homePageMenuItem.Click += new System.EventHandler(this.homePageMenuItem_Click);
+            // 
+            // exitMenuItem
+            // 
+            this.exitMenuItem.Name = "exitMenuItem";
+            this.exitMenuItem.Size = new System.Drawing.Size(273, 22);
+            this.exitMenuItem.Text = "E&xit";
+            this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
             // WatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 478);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.statusBar);
+            this.Controls.Add(this.toolBar);
             this.Controls.Add(this.fissures);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "WatForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WAT – Warframe Alert Tracker";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.toolBar.ResumeLayout(false);
+            this.toolBar.PerformLayout();
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
+            this.trayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,11 +181,18 @@
         #endregion
 
         private Controls.FissureList fissures;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip toolBar;
         private System.Windows.Forms.ToolStripButton alerts;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel alertsCount;
         private System.Windows.Forms.ToolStripButton notifications;
+        private System.Windows.Forms.NotifyIcon trayIcon;
+        private System.Windows.Forms.ContextMenuStrip trayMenu;
+        private System.Windows.Forms.ToolStripMenuItem showMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alertsMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem homePageMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
     }
 }

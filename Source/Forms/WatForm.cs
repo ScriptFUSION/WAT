@@ -22,6 +22,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             application.AlertsUpdate += OnAlertsUpdate;
 
             fissures.ImageRepository = application.ImageRepository;
+
+            trayIcon.Icon = Icon;
+        }
+
+        private void ToggleWindowVisibility() {
+            if (Visible = !Visible) {
+                Activate();
+            }
         }
 
         private void OnWorldStateUpdate(IReadOnlyCollection<Fissure> fissureList, JObject solNodes) {
@@ -49,6 +57,24 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             using (var form = new NotificationOptionsForm(await FissureControl.CreateTestControl(Application.ImageRepository))) {
                 form.ShowDialog(this);
             }
+        }
+
+        private void trayIcon_MouseClick(object sender, MouseEventArgs e) {
+            if (e.Button.HasFlag(MouseButtons.Left)) {
+                ToggleWindowVisibility();
+            }
+        }
+
+        private void showMenuItem_Click(object sender, EventArgs e) {
+            ToggleWindowVisibility();
+        }
+
+        private void homePageMenuItem_Click(object sender, EventArgs e) {
+            System.Diagnostics.Process.Start("https://github.com/ScriptFUSION/WAT");
+        }
+
+        private void exitMenuItem_Click(object sender, EventArgs e) {
+            Close();
         }
     }
 }
