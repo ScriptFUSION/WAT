@@ -45,7 +45,7 @@ namespace ScriptFUSION.WarframeAlertTracker {
         }
 
         private async void OnNewWorldStateObject(IWorldStateObject worldStateObject) {
-            if (!Application.AlertCollection.Matches(worldStateObject)) {
+            if (!Application.Settings.Alerts.Matches(worldStateObject)) {
                 return;
             }
 

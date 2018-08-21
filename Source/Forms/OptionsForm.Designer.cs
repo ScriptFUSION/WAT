@@ -49,12 +49,13 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // 
             this.ok.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ok.Location = new System.Drawing.Point(129, 253);
+            this.ok.Location = new System.Drawing.Point(130, 253);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(75, 26);
             this.ok.TabIndex = 3;
             this.ok.Text = "&OK";
             this.ok.UseVisualStyleBackColor = true;
+            this.ok.Click += new System.EventHandler(this.ok_Click);
             // 
             // tabControl1
             // 
@@ -66,7 +67,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(405, 228);
+            this.tabControl1.Size = new System.Drawing.Size(406, 228);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -75,7 +76,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(8);
-            this.tabPage1.Size = new System.Drawing.Size(397, 202);
+            this.tabPage1.Size = new System.Drawing.Size(398, 202);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -120,7 +121,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(8);
-            this.tabPage2.Size = new System.Drawing.Size(397, 202);
+            this.tabPage2.Size = new System.Drawing.Size(398, 202);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Notifications";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -142,7 +143,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.groupBox1.Controls.Add(this.sample);
             this.groupBox1.Location = new System.Drawing.Point(11, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(373, 153);
+            this.groupBox1.Size = new System.Drawing.Size(374, 153);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Test";
@@ -172,7 +173,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // 
             this.cancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel.Location = new System.Drawing.Point(224, 253);
+            this.cancel.Location = new System.Drawing.Point(225, 253);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 26);
             this.cancel.TabIndex = 7;
@@ -185,7 +186,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel;
-            this.ClientSize = new System.Drawing.Size(429, 291);
+            this.ClientSize = new System.Drawing.Size(430, 291);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ok);

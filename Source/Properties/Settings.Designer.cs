@@ -33,5 +33,17 @@ namespace ScriptFUSION.WarframeAlertTracker.Properties {
                 this["Alerts"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LoadHidden {
+            get {
+                return ((bool)(this["LoadHidden"]));
+            }
+            set {
+                this["LoadHidden"] = value;
+            }
+        }
     }
 }

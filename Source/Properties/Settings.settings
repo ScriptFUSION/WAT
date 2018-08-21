@@ -5,5 +5,8 @@
     <Setting Name="Alerts" Type="ScriptFUSION.WarframeAlertTracker.Alerts.AlertCollection" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="LoadHidden" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

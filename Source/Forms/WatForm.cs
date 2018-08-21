@@ -19,7 +19,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             application.CurrentWorldState.Update +=
                 async worldState => OnWorldStateUpdate(worldState.Fissures, await application.SolNodes);
 
-            application.AlertsUpdate += OnAlertsUpdate;
+            application.Settings.AlertsUpdate += OnAlertsUpdate;
 
             fissures.ImageRepository = application.ImageRepository;
 
@@ -34,7 +34,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
 
         private void OnWorldStateUpdate(IReadOnlyCollection<Fissure> fissureList, JObject solNodes) {
             fissures.Update(fissureList, solNodes);
-            OnAlertsUpdate(Application.AlertCollection);
+            OnAlertsUpdate(Application.Settings.Alerts);
         }
 
         private void OnAlertsUpdate(AlertCollection alertsCollection) {
@@ -44,18 +44,21 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
         }
 
         private void alerts_Click(object sender, EventArgs e) {
-            var alertCollection = Application.AlertCollection.Clone();
+            var alertCollection = Application.Settings.Alerts.Clone();
 
             using (var form = new AlertsForm(Application.CurrentWorldState, alertCollection)) {
                 if (form.ShowDialog(this) == DialogResult.OK) {
-                    Application.AlertCollection = alertCollection;
+                    Application.Settings.Alerts = alertCollection;
+                    Application.Settings.Save();
                 }
             }
         }
 
         private async void options_Click(object sender, EventArgs e) {
-            using (var form = new OptionsForm(await FissureControl.CreateTestControl(Application.ImageRepository))) {
-                form.ShowDialog(this);
+            using (var form = new OptionsForm(Application.Settings, await FissureControl.CreateTestControl(Application.ImageRepository))) {
+                if (form.ShowDialog(this) == DialogResult.OK) {
+                    Application.Settings.Save();
+                }
             }
         }
 
