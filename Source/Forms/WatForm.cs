@@ -2,6 +2,7 @@
 using ScriptFUSION.WarframeAlertTracker.Warframe;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using ScriptFUSION.WarframeAlertTracker.Alerts;
@@ -9,12 +10,29 @@ using ScriptFUSION.WarframeAlertTracker.Controls;
 
 namespace ScriptFUSION.WarframeAlertTracker.Forms {
     public partial class WatForm : Form {
+        private FormWindowState lastWindowState;
+
         private WatApplication Application { get; }
+
+        /// <summary>
+        /// Gets or sets the last non-minimized window state.
+        /// </summary>
+        private FormWindowState LastWindowState
+        {
+            get => lastWindowState;
+            set
+            {
+                Debug.Assert(value != FormWindowState.Minimized);
+
+                lastWindowState = value;
+            }
+        }
 
         internal WatForm(WatApplication application) {
             InitializeComponent();
 
             Application = application;
+            LastWindowState = WindowState;
 
             application.CurrentWorldState.Update +=
                 async worldState => OnWorldStateUpdate(worldState.Fissures, await application.SolNodes);
@@ -26,9 +44,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             trayIcon.Icon = Icon;
         }
 
-        private void ToggleWindowVisibility() {
+        public void ToggleWindowVisibility() {
             if (Visible = !Visible) {
-                Activate();
+                // Restore previous state.
+                WindowState = LastWindowState;
             }
         }
 
@@ -41,6 +60,19 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             fissures.Update(alertsCollection);
 
             alertsCount.Text = Application.CurrentWorldState.CurrentState.WorldStateObjects.Count(alertsCollection.Matches).ToString();
+        }
+
+        private void WatForm_Resize(object sender, EventArgs e) {
+            ShowInTaskbar = WindowState != FormWindowState.Minimized;
+
+            if (WindowState == FormWindowState.Minimized) {
+                // Sync form visibility with minimized state.
+                Visible = false;
+            }
+            else {
+                // Record previous non-minimized state.
+                LastWindowState = WindowState;
+            }
         }
 
         private void alerts_Click(object sender, EventArgs e) {

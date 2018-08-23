@@ -35,10 +35,10 @@
             this.trayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alertsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.homePageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBar.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.trayMenu.SuspendLayout();
@@ -122,7 +122,7 @@
             this.homePageMenuItem,
             this.exitMenuItem});
             this.trayMenu.Name = "trayMenu";
-            this.trayMenu.Size = new System.Drawing.Size(274, 142);
+            this.trayMenu.Size = new System.Drawing.Size(274, 120);
             // 
             // showMenuItem
             // 
@@ -138,6 +138,13 @@
             this.alertsMenuItem.Size = new System.Drawing.Size(273, 22);
             this.alertsMenuItem.Text = "&Alerts...";
             this.alertsMenuItem.Click += new System.EventHandler(this.alerts_Click);
+            // 
+            // optionsMenuItem
+            // 
+            this.optionsMenuItem.Name = "optionsMenuItem";
+            this.optionsMenuItem.Size = new System.Drawing.Size(273, 22);
+            this.optionsMenuItem.Text = "&Options...";
+            this.optionsMenuItem.Click += new System.EventHandler(this.options_Click);
             // 
             // toolStripSeparator1
             // 
@@ -158,13 +165,6 @@
             this.exitMenuItem.Text = "E&xit";
             this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
-            // optionsMenuItem
-            // 
-            this.optionsMenuItem.Name = "optionsMenuItem";
-            this.optionsMenuItem.Size = new System.Drawing.Size(273, 22);
-            this.optionsMenuItem.Text = "&Options...";
-            this.optionsMenuItem.Click += new System.EventHandler(this.options_Click);
-            // 
             // WatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -177,6 +177,7 @@
             this.Name = "WatForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WAT – Warframe Alert Tracker";
+            this.Resize += new System.EventHandler(this.WatForm_Resize);
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
             this.statusBar.ResumeLayout(false);

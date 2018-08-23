@@ -8,6 +8,24 @@ using ScriptFUSION.WarframeAlertTracker.Properties;
 
 namespace ScriptFUSION.WarframeAlertTracker {
     internal sealed class WatApplication : ApplicationContext {
+        private Form mainForm;
+
+        /// <remarks>
+        /// Hides the base implementation so the base Form is always null. This is needed to stop
+        /// Application.RunMessageLoopInner forcing the form to be visible, which is undesirable for our purposes since
+        /// we provide an option to start the application hidden.
+        /// </remarks>
+        public new Form MainForm
+        {
+            get => mainForm;
+            set
+            {
+                mainForm = value;
+
+                value.HandleDestroyed += delegate { if (!value.RecreatingHandle) ExitThread(); };
+            }
+        }
+
         public CurrentWorldState CurrentWorldState { get; } = new CurrentWorldState(new WorldStateDownloader(Downloader));
 
         public Settings Settings { get; } = Settings.Default;
@@ -22,6 +40,7 @@ namespace ScriptFUSION.WarframeAlertTracker {
 
         public WatApplication() {
             MainForm = new WatForm(this);
+            if (!Settings.LoadHidden) MainForm.Show();
 
             new Notifier(this);
             CurrentWorldState.DownloadIndefinitely();
