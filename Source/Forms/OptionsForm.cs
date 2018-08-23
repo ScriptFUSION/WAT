@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using ScriptFUSION.WarframeAlertTracker.Controls;
+using ScriptFUSION.WarframeAlertTracker.Registry;
 using ScriptFUSION.WarframeAlertTracker.Properties;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 
@@ -9,20 +10,24 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
 
         private Settings Settings { get; }
 
-        internal OptionsForm(Settings settings, FissureControl dummyFissureControl) {
+        private RegistrySettings RegistrySettings { get; }
+
+        internal OptionsForm(Settings settings, RegistrySettings registrySettings, FissureControl dummyFissureControl) {
             InitializeComponent();
-            ReadSettings(Settings = settings);
+            ReadSettings(Settings = settings, RegistrySettings = registrySettings);
 
             imageRepository = dummyFissureControl.ImageRepository;
             dummyFissureControl.Size = sample.Size;
             sample.Image = dummyFissureControl.Snapshot();
         }
 
-        private void ReadSettings(Settings settings) {
+        private void ReadSettings(Settings settings, RegistrySettings registrySettings) {
+            loadSystem.Checked = registrySettings.LoadAtStartUp.Enabled;
             loadHidden.Checked = settings.LoadHidden;
         }
 
         private void WriteSettings() {
+            RegistrySettings.LoadAtStartUp.Enabled = loadSystem.Checked;
             Settings.LoadHidden = loadHidden.Checked;
         }
 

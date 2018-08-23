@@ -75,6 +75,9 @@
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Notifier.cs" />
+    <Compile Include="Registry\LoadAtStartupRegistryEntry.cs" />
+    <Compile Include="Registry\RegistryEntry.cs" />
+    <Compile Include="Registry\RegistrySettings.cs" />
     <Compile Include="Properties\Settings.cs" />
     <Compile Include="Warframe\FissureTierParser.cs" />
     <Compile Include="Warframe\MissionType.cs" />

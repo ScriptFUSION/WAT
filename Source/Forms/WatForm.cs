@@ -44,7 +44,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             trayIcon.Icon = Icon;
         }
 
-        public void ToggleWindowVisibility() {
+        private void ToggleWindowVisibility() {
             if (Visible = !Visible) {
                 // Restore previous state.
                 WindowState = LastWindowState;
@@ -87,9 +87,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
         }
 
         private async void options_Click(object sender, EventArgs e) {
-            using (var form = new OptionsForm(Application.Settings, await FissureControl.CreateTestControl(Application.ImageRepository))) {
+            using (var form = new OptionsForm(
+                Application.Settings,
+                Application.RegistrySettings,
+                await FissureControl.CreateTestControl(Application.ImageRepository)
+            )) {
                 if (form.ShowDialog(this) == DialogResult.OK) {
                     Application.Settings.Save();
+                    Application.RegistrySettings.Save();
                 }
             }
         }
@@ -105,7 +110,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
         }
 
         private void homePageMenuItem_Click(object sender, EventArgs e) {
-            System.Diagnostics.Process.Start("https://github.com/ScriptFUSION/WAT");
+            Process.Start("https://github.com/ScriptFUSION/WAT");
         }
 
         private void exitMenuItem_Click(object sender, EventArgs e) {
