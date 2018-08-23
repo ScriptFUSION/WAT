@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{37C22337-38D4-4E8E-99B4-89BB16C1FF1D}</ProjectGuid>
+    <ProjectGuid>{C3A9F1E5-D0F9-475F-8515-D4134666B5DA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ScriptFUSION.WarframeAlertTracker</RootNamespace>
     <AssemblyName>WAT</AssemblyName>

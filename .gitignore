@@ -1,4 +1,5 @@
 .*/
+/Release/
 bin/
 obj/
 packages/
