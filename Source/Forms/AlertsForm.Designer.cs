@@ -226,7 +226,7 @@
             this.alertsGroup.Size = new System.Drawing.Size(501, 198);
             this.alertsGroup.TabIndex = 1;
             this.alertsGroup.TabStop = false;
-            this.alertsGroup.Text = "Alerts";
+            this.alertsGroup.Text = "Alert rules";
             // 
             // AlertsForm
             // 

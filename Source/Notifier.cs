@@ -25,7 +25,7 @@ namespace ScriptFUSION.WarframeAlertTracker {
                 return;
             }
 
-            Notification = new NotificationForm(control);
+            Notification = new NotificationForm(control, Application.Settings.NotificationHoldTime);
             Notification.Closed += delegate {
                 Notification = null;
                 Next();

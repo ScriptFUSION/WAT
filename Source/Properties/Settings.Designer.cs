@@ -57,5 +57,17 @@ namespace ScriptFUSION.WarframeAlertTracker.Properties {
                 this["RefreshRate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public double NotificationHoldTime {
+            get {
+                return ((double)(this["NotificationHoldTime"]));
+            }
+            set {
+                this["NotificationHoldTime"] = value;
+            }
+        }
     }
 }

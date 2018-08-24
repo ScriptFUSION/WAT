@@ -29,6 +29,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -39,6 +40,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.loadHidden = new System.Windows.Forms.CheckBox();
             this.loadSystem = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.holdTime = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +55,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             ((System.ComponentModel.ISupportInitialize)(this.updateInterval)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.holdTime)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sample)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +65,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // 
             this.ok.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ok.Location = new System.Drawing.Point(130, 253);
+            this.ok.Location = new System.Drawing.Point(130, 307);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(75, 26);
             this.ok.TabIndex = 3;
@@ -76,7 +83,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(406, 228);
+            this.tabControl1.Size = new System.Drawing.Size(406, 282);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -86,13 +93,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(8);
-            this.tabPage1.Size = new System.Drawing.Size(398, 202);
+            this.tabPage1.Size = new System.Drawing.Size(398, 256);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
@@ -108,10 +116,18 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Update interval";
             // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(9, 70);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(177, 13);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Sets the content refresh rate.";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(167, 30);
+            this.label7.Location = new System.Drawing.Point(165, 21);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(21, 13);
             this.label7.TabIndex = 27;
@@ -121,7 +137,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(128, 30);
+            this.label6.Location = new System.Drawing.Point(126, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(21, 13);
             this.label6.TabIndex = 26;
@@ -131,7 +147,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(89, 30);
+            this.label5.Location = new System.Drawing.Point(88, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(21, 13);
             this.label5.TabIndex = 25;
@@ -141,7 +157,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(51, 30);
+            this.label4.Location = new System.Drawing.Point(49, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(24, 13);
             this.label4.TabIndex = 24;
@@ -151,7 +167,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 30);
+            this.label3.Location = new System.Drawing.Point(9, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 13);
             this.label3.TabIndex = 23;
@@ -162,7 +178,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // 
             this.updateInterval.BackColor = System.Drawing.SystemColors.Window;
             this.updateInterval.LargeChange = 1;
-            this.updateInterval.Location = new System.Drawing.Point(9, 42);
+            this.updateInterval.Location = new System.Drawing.Point(7, 33);
             this.updateInterval.Maximum = 4;
             this.updateInterval.Name = "updateInterval";
             this.updateInterval.Size = new System.Drawing.Size(182, 45);
@@ -205,20 +221,83 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(8);
-            this.tabPage2.Size = new System.Drawing.Size(398, 202);
+            this.tabPage2.Size = new System.Drawing.Size(398, 256);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Notifications";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.holdTime);
+            this.groupBox4.Location = new System.Drawing.Point(11, 35);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(374, 51);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Options";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Show notification for";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(175, 21);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "seconds.";
+            // 
+            // holdTime
+            // 
+            this.holdTime.DecimalPlaces = 2;
+            this.holdTime.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.holdTime.Location = new System.Drawing.Point(114, 18);
+            this.holdTime.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.holdTime.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.holdTime.Name = "holdTime";
+            this.holdTime.Size = new System.Drawing.Size(55, 20);
+            this.holdTime.TabIndex = 8;
+            this.holdTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.holdTime.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(310, 13);
             this.label1.TabIndex = 6;
@@ -226,11 +305,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.sample);
-            this.groupBox1.Location = new System.Drawing.Point(11, 38);
+            this.groupBox1.Location = new System.Drawing.Point(11, 92);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(374, 153);
             this.groupBox1.TabIndex = 7;
@@ -242,9 +320,9 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(248, 13);
+            this.label2.Size = new System.Drawing.Size(298, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Use the button below to test the notification popup.";
+            this.label2.Text = "Click the preview below to test the notification popup settings.";
             // 
             // sample
             // 
@@ -262,7 +340,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             // 
             this.cancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel.Location = new System.Drawing.Point(225, 253);
+            this.cancel.Location = new System.Drawing.Point(225, 307);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 26);
             this.cancel.TabIndex = 7;
@@ -275,7 +353,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel;
-            this.ClientSize = new System.Drawing.Size(430, 291);
+            this.ClientSize = new System.Drawing.Size(430, 345);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ok);
@@ -293,6 +371,9 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.holdTime)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sample)).EndInit();
@@ -320,5 +401,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
         private Label label4;
         private Label label3;
         private TrackBar updateInterval;
+        private Label label8;
+        private Label label10;
+        private Label label9;
+        private NumericUpDown holdTime;
+        private GroupBox groupBox4;
     }
 }

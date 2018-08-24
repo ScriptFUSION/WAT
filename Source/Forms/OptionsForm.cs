@@ -34,12 +34,15 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             catch (ArgumentOutOfRangeException) {
                 // Use default provided by UI.
             }
+
+            holdTime.Value = (decimal)settings.NotificationHoldTime;
         }
 
         private void WriteSettings() {
             RegistrySettings.LoadAtStartUp.Enabled = loadSystem.Checked;
             Settings.LoadHidden = loadHidden.Checked;
             Settings.RefreshRate = UpdateIntervalToRefreshRate(updateInterval.Value);
+            Settings.NotificationHoldTime = (double)holdTime.Value;
         }
 
         private static int UpdateIntervalToRefreshRate(int interval) {
@@ -50,11 +53,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             return Array.IndexOf(updateIntervals, rate);
         }
 
-        private async void sample_Click(object sender, System.EventArgs e) {
-            new NotificationForm(await FissureControl.CreateTestControl(imageRepository)).Show(this);
+        private async void sample_Click(object sender, EventArgs e) {
+            new NotificationForm(
+                await FissureControl.CreateTestControl(imageRepository),
+                (double)holdTime.Value
+            ).Show(this);
         }
 
-        private void ok_Click(object sender, System.EventArgs e) {
+        private void ok_Click(object sender, EventArgs e) {
             WriteSettings();
         }
     }

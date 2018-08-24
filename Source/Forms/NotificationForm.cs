@@ -41,12 +41,13 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
         /// </summary>
         private double AnimationTime { get; } = .45;
 
-        private double HoldTime { get; } = 2.75;
+        private double HoldTime { get; }
 
-        public NotificationForm(Control childControl) {
+        public NotificationForm(Control childControl, double holdTime) {
             InitializeComponent();
 
             ChildControl = childControl;
+            HoldTime = holdTime;
         }
 
         private enum SlideDirection {
