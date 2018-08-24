@@ -69,10 +69,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             void ShowWindow(double portion) {
                 var width = (int)Math.Round(target.Width * portion);
 
-                Size = new Size(
-                    screen.Width - width,
-                    target.Height
-                );
+                Size = new Size(width, target.Height);
                 Location = new Point(
                     screen.Right - width,
                     screen.Height / 2 - target.Height / 2

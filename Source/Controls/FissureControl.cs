@@ -26,7 +26,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Controls {
             }
         }
 
-        public Color ActiveColour { get; } = Color.FromArgb(byte.MaxValue / 5, Color.CornflowerBlue);
+        public Color ActiveColour { get; } = Color.FromArgb(byte.MaxValue / 4, Color.CornflowerBlue);
 
         public FissureControl() {
             InitializeComponent();
