@@ -27,7 +27,7 @@ namespace ScriptFUSION.WarframeAlertTracker {
             }
         }
 
-        public CurrentWorldState CurrentWorldState { get; } = new CurrentWorldState(new WorldStateDownloader(Downloader));
+        public CurrentWorldState CurrentWorldState { get; }
 
         public Settings Settings { get; } = Settings.Default;
 
@@ -42,12 +42,14 @@ namespace ScriptFUSION.WarframeAlertTracker {
         private SolNodesDownloader SolNodesDownloader { get; } = new SolNodesDownloader(Downloader);
 
         public WatApplication() {
+            CurrentWorldState = new CurrentWorldState(new WorldStateDownloader(Downloader), Settings);
             MainForm = new WatForm(this);
-            if (!Settings.LoadHidden) MainForm.Show();
-
             new Notifier(this);
+
             CurrentWorldState.DownloadIndefinitely();
             SolNodes = SolNodesDownloader.Download();
+
+            if (!Settings.LoadHidden) MainForm.Show();
         }
     }
 }

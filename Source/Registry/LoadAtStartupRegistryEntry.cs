@@ -20,10 +20,10 @@ namespace ScriptFUSION.WarframeAlertTracker.Registry {
 
         public LoadAtStartupRegistryEntry()
             : base(Microsoft.Win32.Registry.CurrentUser, @"Software\Microsoft\Windows\CurrentVersion\Run", Application.ProductName) {
-            enabled = IsSynchronised();
+            enabled = IsEnabled();
         }
 
-        public override bool IsSynchronised() {
+        private bool IsEnabled() {
             using (var key = Hive.OpenSubKey(Key)) {
                 return key?.GetValue(Name)?.ToString().StartsWith(value) ?? false;
             }

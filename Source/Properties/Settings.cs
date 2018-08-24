@@ -6,6 +6,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Properties {
     internal sealed partial class Settings {
         public event Action<AlertCollection> AlertsUpdate;
 
+        public event Action<int> RefreshRateUpdate;
+
         public Settings() {
             if (Alerts == null) Alerts = new AlertCollection();
 
@@ -13,8 +15,14 @@ namespace ScriptFUSION.WarframeAlertTracker.Properties {
         }
 
         private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e) {
-            if (e.PropertyName == "Alerts") {
-                AlertsUpdate?.Invoke(Alerts);
+            switch (e.PropertyName) {
+                case "Alerts":
+                    AlertsUpdate?.Invoke(Alerts);
+                    break;
+
+                case "RefreshRate":
+                    RefreshRateUpdate?.Invoke(RefreshRate);
+                    break;
             }
         }
     }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ScriptFUSION.WarframeAlertTracker.Alerts;
 using ScriptFUSION.WarframeAlertTracker.Controls;
@@ -42,6 +43,19 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             fissures.ImageRepository = application.ImageRepository;
 
             trayIcon.Icon = Icon;
+
+            ShowUpdateProgressLoop();
+        }
+
+        private async void ShowUpdateProgressLoop() {
+            while (!IsDisposed) {
+                var elapsed = DateTime.Now - Application.CurrentWorldState.LastUpdate;
+                var format = elapsed.TotalSeconds >= 60 ? @"m\m\ s\s" : @"s\s";
+
+                updateTimeRemaining.Text = elapsed.TotalSeconds < 1 ? "just now" : elapsed.ToString(format) + " ago";
+
+                await Task.Delay(500);
+            }
         }
 
         private void ToggleWindowVisibility() {

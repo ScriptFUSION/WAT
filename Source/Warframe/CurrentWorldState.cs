@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ScriptFUSION.WarframeAlertTracker.Properties;
 
 namespace ScriptFUSION.WarframeAlertTracker.Warframe {
     /// <summary>
@@ -18,14 +19,19 @@ namespace ScriptFUSION.WarframeAlertTracker.Warframe {
         /// Gets or sets a value that specifies the rate at which the world state is refreshed, in seconds.
         /// </summary>
         /// <remarks>It is observed that the server refreshes state once per minute.</remarks>
-        public int RefreshRate { get; set; } = 15;
+        public int RefreshRate { get; private set; }
 
         public bool Running { get; private set; }
 
+        public DateTime LastUpdate { get; private set; }
+
         private WorldStateDownloader Downloader { get; }
 
-        public CurrentWorldState(WorldStateDownloader downloader) {
+        public CurrentWorldState(WorldStateDownloader downloader, Settings settings) {
             Downloader = downloader;
+            RefreshRate = settings.RefreshRate;
+
+            settings.RefreshRateUpdate += i => RefreshRate = i;
         }
 
         public async void DownloadIndefinitely() {
@@ -42,6 +48,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Warframe {
 
         private async void Download() {
             var worldState = await Downloader.Download();
+
+            LastUpdate = DateTime.Now;
 
             if (CurrentState == null || worldState?.Time > CurrentState.Time) {
                 UpdateWorldState(CurrentState, worldState);

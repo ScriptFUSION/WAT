@@ -14,8 +14,6 @@ namespace ScriptFUSION.WarframeAlertTracker.Registry {
             Name = name;
         }
 
-        public abstract bool IsSynchronised();
-
         public abstract void Synchronise();
     }
 }

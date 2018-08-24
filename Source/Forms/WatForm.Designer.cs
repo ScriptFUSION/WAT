@@ -29,6 +29,8 @@
             this.alerts = new System.Windows.Forms.ToolStripButton();
             this.options = new System.Windows.Forms.ToolStripButton();
             this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.updateTimeRemaining = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertsCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -52,7 +54,7 @@
             this.fissures.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fissures.Location = new System.Drawing.Point(12, 18);
             this.fissures.Name = "fissures";
-            this.fissures.Size = new System.Drawing.Size(449, 425);
+            this.fissures.Size = new System.Drawing.Size(449, 426);
             this.fissures.TabIndex = 2;
             // 
             // toolBar
@@ -85,12 +87,26 @@
             // 
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.alertsCount});
-            this.statusBar.Location = new System.Drawing.Point(0, 456);
+            this.alertsCount,
+            this.toolStripStatusLabel2,
+            this.updateTimeRemaining});
+            this.statusBar.Location = new System.Drawing.Point(0, 457);
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(473, 22);
             this.statusBar.TabIndex = 10;
             this.statusBar.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(52, 17);
+            this.toolStripStatusLabel2.Text = "Updated";
+            // 
+            // updateTimeRemaining
+            // 
+            this.updateTimeRemaining.Name = "updateTimeRemaining";
+            this.updateTimeRemaining.Size = new System.Drawing.Size(24, 17);
+            this.updateTimeRemaining.Text = "15s";
             // 
             // toolStripStatusLabel1
             // 
@@ -169,7 +185,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 478);
+            this.ClientSize = new System.Drawing.Size(473, 479);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.toolBar);
             this.Controls.Add(this.fissures);
@@ -205,5 +221,7 @@
         private System.Windows.Forms.ToolStripMenuItem homePageMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel updateTimeRemaining;
     }
 }
