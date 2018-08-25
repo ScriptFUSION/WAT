@@ -2,7 +2,7 @@
 Warframe Alert Tracker (WAT)
 ============================
 
-WAT shows notifications when something interesting happens in the [Warframe][Warframe] world. You choose what defines *interesting* by creating alert rules to match your interests.
+WAT shows notifications when something interesting happens in the [Warframe][Warframe] world. You choose what defines *interesting* by creating rules to match your interests. When a rule matches, a notification pops up to let you know, that works whilst playing the game or using your computer normally.
 
 Contents
 --------
@@ -52,7 +52,7 @@ WAT minimizes to the system tray because it is intended to keep out of the way a
 Download
 --------
 
-See the [latest release][Latest release] to download the Windows installer (`.exe`), compiled binaries (`.zip`) or source code. It is recommended to use the installer because it installing dependencies automatically and upgrades any previous installations in-place.
+See the [latest release][Latest release] to download the Windows installer (`.exe`), compiled binaries (`.zip`) or source code. It is recommended to use the installer because it installs dependencies automatically and upgrades any previous installations.
 
 Requirements
 ------------
