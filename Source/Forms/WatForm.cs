@@ -62,6 +62,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             if (Visible = !Visible) {
                 // Restore previous state.
                 WindowState = LastWindowState;
+                // Set as foreground window, otherwise it can be restored behind other windows.
+                Activate();
             }
         }
 

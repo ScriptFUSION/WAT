@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using ScriptFUSION.WarframeAlertTracker.Forms;
 using ScriptFUSION.WarframeAlertTracker.Resource;
 using ScriptFUSION.WarframeAlertTracker.Warframe;
@@ -40,6 +41,9 @@ namespace ScriptFUSION.WarframeAlertTracker {
         private static Downloader Downloader { get; } = new Downloader();
 
         private SolNodesDownloader SolNodesDownloader { get; } = new SolNodesDownloader(Downloader);
+
+        public static string CanonicalProductVersion { get; } =
+            string.Join(".", Application.ProductVersion.Split('.').TakeWhile((_, i) => i < 3));
 
         public WatApplication() {
             CurrentWorldState = new CurrentWorldState(new WorldStateDownloader(Downloader), Settings);

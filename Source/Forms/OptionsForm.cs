@@ -19,6 +19,8 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             InitializeComponent();
             ReadSettings(Settings = settings, RegistrySettings = registrySettings);
 
+            version.Text = $"v{WatApplication.CanonicalProductVersion}";
+
             imageRepository = dummyFissureControl.ImageRepository;
             dummyFissureControl.Size = sample.Size;
             sample.Image = dummyFissureControl.Snapshot();

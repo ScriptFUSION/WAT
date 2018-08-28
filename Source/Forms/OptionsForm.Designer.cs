@@ -49,6 +49,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.label2 = new System.Windows.Forms.Label();
             this.sample = new System.Windows.Forms.PictureBox();
             this.cancel = new System.Windows.Forms.Button();
+            this.version = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -347,6 +348,17 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.cancel.Text = "&Cancel";
             this.cancel.UseVisualStyleBackColor = true;
             // 
+            // version
+            // 
+            this.version.Enabled = false;
+            this.version.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.version.Location = new System.Drawing.Point(316, 313);
+            this.version.Name = "version";
+            this.version.Size = new System.Drawing.Size(98, 15);
+            this.version.TabIndex = 8;
+            this.version.Text = "version X.Y.Z";
+            this.version.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // OptionsForm
             // 
             this.AcceptButton = this.ok;
@@ -354,6 +366,7 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel;
             this.ClientSize = new System.Drawing.Size(430, 345);
+            this.Controls.Add(this.version);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ok);
@@ -406,5 +419,6 @@ namespace ScriptFUSION.WarframeAlertTracker.Forms {
         private Label label9;
         private NumericUpDown holdTime;
         private GroupBox groupBox4;
+        private Label version;
     }
 }

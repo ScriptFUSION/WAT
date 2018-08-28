@@ -9,9 +9,19 @@ namespace ScriptFUSION.WarframeAlertTracker.Properties {
         public event Action<int> RefreshRateUpdate;
 
         public Settings() {
+            TryUpgrade();
+
             if (Alerts == null) Alerts = new AlertCollection();
 
             PropertyChanged += Settings_PropertyChanged;
+        }
+
+        private void TryUpgrade() {
+            if (Upgraded) return;
+
+            Upgrade();
+            Upgraded = true;
+            Save();
         }
 
         private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e) {
